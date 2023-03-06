@@ -4,6 +4,7 @@ using CRIP.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRIP.Migrations
 {
     [DbContext(typeof(CRIPDbContext))]
-    partial class CRIPDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230306085430_v2")]
+    partial class v2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,89 +94,16 @@ namespace CRIP.Migrations
                         {
                             Id = "90184155-dee0-40c9-bb1e-b5ed07afc04e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bb4fc1f7-93db-4955-a274-b09b9d97deba",
+                            ConcurrencyStamp = "b91d85d0-66a3-463a-a19c-72ab1b09158e",
                             Email = "CRIPAdmin@qq.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEABMO3LkCjdpBlxT3B9/mLnKMKQG63zgsfIetZU1HDeagNiUpgFYueJ8R/DpzQRlNg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKTYPl48WHXAwyrAvFV02dRwlorWsrZyLm7WVZk6XKCRcz/EDOj0p9/y7G0shoe1Fg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "70c5718d-65bb-4f92-86a4-9a9002492eb1",
+                            SecurityStamp = "4ec20084-9484-4c3a-9c2c-c6f244ea2621",
                             TwoFactorEnabled = false,
                             UserName = "Admin@qq.com"
                         });
-                });
-
-            modelBuilder.Entity("CRIP.Models.Cart", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Carts");
-                });
-
-            modelBuilder.Entity("CRIP.Models.CartItem", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CartId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("GoodsId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("GoodsQuantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CartId");
-
-                    b.ToTable("CartItems");
-                });
-
-            modelBuilder.Entity("CRIP.Models.Goods", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Info")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Goods");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -206,14 +136,14 @@ namespace CRIP.Migrations
                         new
                         {
                             Id = "308660dc-ae51-480f-824d-7dca6714c3e2",
-                            ConcurrencyStamp = "aa7d37d2-b885-4603-92cb-3344526a52b5",
+                            ConcurrencyStamp = "b180a09a-e301-453f-b240-c72f38528b41",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "ce82c36a-ca40-8e0a-3b89-53dc06850c3c",
-                            ConcurrencyStamp = "f0cf6657-59bc-4465-a2e9-7c25557369c0",
+                            ConcurrencyStamp = "af6fb748-9e24-4e84-acfd-0064f10278ba",
                             Name = "OrdinaryUser",
                             NormalizedName = "ORDINARYUSER"
                         });
@@ -357,15 +287,6 @@ namespace CRIP.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("CRIP.Models.CartItem", b =>
-                {
-                    b.HasOne("CRIP.Models.Cart", null)
-                        .WithMany("CartItems")
-                        .HasForeignKey("CartId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -442,11 +363,6 @@ namespace CRIP.Migrations
                     b.Navigation("Tokens");
 
                     b.Navigation("UserRoles");
-                });
-
-            modelBuilder.Entity("CRIP.Models.Cart", b =>
-                {
-                    b.Navigation("CartItems");
                 });
 #pragma warning restore 612, 618
         }

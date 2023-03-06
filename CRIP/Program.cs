@@ -11,14 +11,18 @@ using CRIP.Services.IRepositorys;
 using CRIP.Services.Repositorys;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
+using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddControllers();
+#region JsonPatch
+builder.Services.AddControllers().AddNewtonsoftJson(setupAction => {
+    setupAction.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+#endregion
 
 #region redis服务依赖
 //redis缓存
@@ -141,7 +145,16 @@ builder.Services.AddDbContext<CRIPDbContext>(option =>
 });
 #endregion
 
+#region  IUrlHelper服务注入
+builder.Services
+       .AddSingleton<IActionContextAccessor, ActionContextAccessor>()
+       .AddMvc();
+#endregion
+
+
 builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IGoodsRepository, GoodsRepository>();
+
 
 var app = builder.Build();
 

@@ -16,7 +16,7 @@ namespace CRIP.Services.Repositorys
             _CRIPDbContext.Remove(entity);
         }
 
-        public async Task<TEntity> GetByIdAsync(Guid? id)
+        public async Task<TEntity> GetByIdAsync(string id)
         {
          return  await _CRIPDbContext.FindAsync<TEntity>(id);
         }
@@ -29,6 +29,11 @@ namespace CRIP.Services.Repositorys
         public async Task SaveAsync()
         {
             await _CRIPDbContext.SaveChangesAsync();
+        }
+
+        public async Task AddEntityAsync(TEntity entity)
+        {
+         await  _CRIPDbContext.AddAsync(entity);
         }
     }
 

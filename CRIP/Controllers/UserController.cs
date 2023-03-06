@@ -39,7 +39,6 @@ namespace CRIP.Controllers
         private readonly IConfiguration _configuration;
         //缓存验证码
         private readonly IDatabase _redis;
-        private readonly IMemoryCache _cache;
         //使用HttpContext的接口
         private readonly IHttpContextAccessor _httpContextAccessor;
         //用户仓库
@@ -49,7 +48,6 @@ namespace CRIP.Controllers
             UserManager<CRIPUser> userManager,
             SignInManager<CRIPUser> signInManager,
             RoleManager<IdentityRole> roleManager,
-            IMemoryCache cache,
             IHttpContextAccessor httpContextAccessor,
             RedisHelper client,
             IUserRepository userRepository,
@@ -60,7 +58,6 @@ namespace CRIP.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
-            _cache = cache;
             _httpContextAccessor = httpContextAccessor;
             _redis = client.GetDatabase();
             _userRepository = userRepository;
@@ -280,9 +277,8 @@ namespace CRIP.Controllers
             PagesResponse pagesResponse = new PagesResponse();
 
             #region 校验
-            string code;//验证码
-            //如果能从cache获得"邮箱"-对应的验证码 会赋值给code 从而取得，是个hash关系在缓存里，缓存有时效，可以设置
-            if (!_cache.TryGetValue(forgetPasswordParameter.Email, out code))
+            string? code = await _redis.StringGetAsync(forgetPasswordParameter.Email);//验证码
+            if (code == null)//查看是否为空
             {
                 pagesResponse.BadRequest("验证码已过期");
                 return BadRequest(pagesResponse);
@@ -311,7 +307,8 @@ namespace CRIP.Controllers
             }
             #endregion
 
-            _cache.Remove(forgetPasswordParameter.Email);//成功以后清除缓存
+            //_cache.Remove(registerParameter.Email);//成功以后清除缓存
+            await _redis.KeyDeleteAsync(forgetPasswordParameter.Email);
 
             pagesResponse.Success("重置成功");
             return Ok(pagesResponse);
@@ -416,13 +413,13 @@ namespace CRIP.Controllers
             Random random = new Random();
             string code = random.Next(100000, 999999).ToString();//生成随机数100000~999999
 
-            _cache.Remove(Email);//先清除上次的验证码
+            // _cache.Remove(Email);//先清除上次的验证码
+            await _redis.KeyDeleteAsync(Email);
 
             var cacheEntryOptions = new MemoryCacheEntryOptions()
             .SetAbsoluteExpiration(TimeSpan.FromMinutes(3));//设置缓存时间（三分钟）单位是毫秒
 
-            _cache.Set(Email, code, cacheEntryOptions); //服务端缓存邮箱的验证码通过cacheEntryOptions设置
-                                                        //  MailMessage mail = EmailHelper.EmailValidationMessage(code); 
+            await _redis.StringSetAsync(Email, code, new TimeSpan(0, 3, 0));//redis設置時間 
             #endregion
 
             #region 发送邮件

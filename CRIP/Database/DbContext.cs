@@ -15,6 +15,9 @@ namespace CRIP.Database
         /// 用户
         /// </summary>
         public DbSet<CRIPUser> CRIPUsers { get; set; }
+        public DbSet<Goods> Goods { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
 

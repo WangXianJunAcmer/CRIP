@@ -102,3 +102,6 @@ D:\code\Csharp\CRIP\CRIP\obj\Debug\net6.0\refint\CRIP.dll
 D:\code\Csharp\CRIP\CRIP\obj\Debug\net6.0\CRIP.pdb
 D:\code\Csharp\CRIP\CRIP\obj\Debug\net6.0\CRIP.genruntimeconfig.cache
 D:\code\Csharp\CRIP\CRIP\obj\Debug\net6.0\ref\CRIP.dll
+D:\code\Csharp\CRIP\CRIP\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\code\Csharp\CRIP\CRIP\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\code\Csharp\CRIP\CRIP\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
