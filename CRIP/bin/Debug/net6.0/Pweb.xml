@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PWeb</name>
+    </assembly>
+    <members>
+        <member name="T:PWeb.Controllers.UserController">
+            <summary>
+            用户控制器
+            </summary>
+        </member>
+        <member name="M:PWeb.Controllers.UserController.LoginAsync(PWeb.ResourceParameters.LoginParameter)">
+            <summary>
+            登录
+            </summary>
+            <param name="loginParameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PWeb.Controllers.UserController.RegisterAsync(PWeb.ResourceParameters.RegisterParameter)">
+            <summary>
+            注册
+            </summary>
+            <param name="registerParameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PWeb.Controllers.UserController.ChangePasswordAsync(PWeb.ResourceParameters.ChangePasswordParameter)">
+            <summary>
+            重置密码
+            </summary>
+            <param name="forgetPasswordParameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PWeb.Controllers.UserController.SendEmailToRegister(System.String)">
+            <summary>
+            发送注册邮件
+            </summary>
+            <param name="Email">邮箱</param>
+            <returns></returns>
+        </member>
+        <member name="M:PWeb.Controllers.UserController.SendEmailToChangePassword(System.String)">
+            <summary>
+            发送重置密码邮件
+            </summary>
+            <param name="Email">邮箱</param>
+            <returns></returns>
+        </member>
+        <member name="M:PWeb.Controllers.UserController.GetUserMessage(System.String)">
+            <summary>
+            获得用户信息
+            </summary>
+            <param name="mediaType"></param>
+            <returns></returns>
+        </member>
+        <member name="P:PWeb.Database.PWebDbContext.PWebUsers">
+            <summary>
+            用户
+            </summary>
+        </member>
+        <member name="M:PWeb.Helper.EmailHelper.SendEmail">
+            <summary>
+            发送的信息，发送的默认地址，如果传参了话就被覆盖
+            </summary>
+            <param name="msg">发送的信息</param>
+            <param name="address">发送的地址</param>
+            <returns></returns>
+        </member>
+        <member name="M:PWeb.Helper.RedisHelper.GetConnect">
+            <summary>
+            获取ConnectionMultiplexer
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PWeb.Helper.RedisHelper.GetDatabase">
+            <summary>
+            获取数据库
+            </summary>
+            <param name="configName"></param>
+            <param name="db">默认为0：优先代码的db配置，其次config中的配置</param>
+            <returns></returns>
+        </member>
+        <member name="M:PWeb.Helper.RSAHelper.RSAEncryption(System.String,System.String)">
+            <summary> 
+            RSA加密数据 
+            </summary> 
+            <param name="express">要加密数据</param> 
+            <param name="KeyContainerName">密匙容器的名称</param> 
+            <returns></returns> 
+        </member>
+        <member name="M:PWeb.Helper.RSAHelper.RSADecrypt(System.String,System.String)">
+            <summary> 
+            RSA解密数据 
+            </summary> 
+            <param name="ciphertext">要解密数据</param> 
+            <param name="KeyContainerName">密匙容器的名称</param> 
+            <returns></returns> 
+        </member>
+        <member name="T:PWeb.Migrations.v1">
+            <inheritdoc />
+        </member>
+        <member name="M:PWeb.Migrations.v1.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PWeb.Migrations.v1.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:PWeb.Migrations.v1.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:PWeb.Models.PWebUser">
+            <summary>
+            User
+            </summary>
+        </member>
+        <member name="M:PWeb.Services.IRepositorys.IUserRepository.AddRoleToUserAsync(Microsoft.AspNetCore.Identity.IdentityUserRole{System.String})">
+            <summary>
+            添加role给user
+            </summary>
+            <param name="identityUserRole"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
