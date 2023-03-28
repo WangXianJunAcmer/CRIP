@@ -217,18 +217,18 @@ namespace CRIP.Controllers
             if (IsHaveUser != null)
             {
                 pagesResponse.BadRequest("该邮箱已被注册");
-                return BadRequest(pagesResponse);
+                return Ok(pagesResponse);
             }
             string? code = await _redis.StringGetAsync(registerParameter.Email);//验证码
             if (code == null)//查看是否为空
             {
                 pagesResponse.BadRequest("验证码已过期");
-                return BadRequest(pagesResponse);
+                return Ok(pagesResponse);
             }
             else if (registerParameter.Code != code)//校验验证码
             {
                 pagesResponse.BadRequest("验证码错误");
-                return BadRequest(pagesResponse);
+                return Ok(pagesResponse);
             }
             #endregion
             #region 创建用户
@@ -281,19 +281,19 @@ namespace CRIP.Controllers
             if (code == null)//查看是否为空
             {
                 pagesResponse.BadRequest("验证码已过期");
-                return BadRequest(pagesResponse);
+                return Ok(pagesResponse);
             }
             //校验验证码
             if (forgetPasswordParameter.Code != code)
             {
                 pagesResponse.BadRequest("验证码错误");
-                return BadRequest(pagesResponse);
+                return Ok(pagesResponse);
             }
             var user = await _userManager.FindByEmailAsync(forgetPasswordParameter.Email);//通过邮件获得用户
             if (user == null)
             {
                 pagesResponse.NotFound("没有该用户");
-                return BadRequest(pagesResponse);
+                return Ok(pagesResponse);
             }
             #endregion
             #region 重置密码
