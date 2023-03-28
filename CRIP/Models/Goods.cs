@@ -9,7 +9,8 @@
         /// <summary>
         /// 价格
         /// </summary>
-        public double Price { get; set; }
+        public decimal Price { get; set; }
+ 
         /// <summary>
         /// 商品信息
         /// </summary>

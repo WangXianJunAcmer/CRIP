@@ -4,6 +4,19 @@
         <name>CRIP</name>
     </assembly>
     <members>
+        <member name="M:CRIP.Controllers.CartController.CheckouteCart">
+            <summary>
+            全部下单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Controllers.CartController.BatchCheckouteCart(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            批量下单
+            </summary>
+            <param name="ItemIDs"></param>
+            <returns></returns>
+        </member>
         <member name="M:CRIP.Controllers.GoodsController.GetGoodByIdAsync(System.String)">
             <summary>
             通过Id获得商品
@@ -88,6 +101,41 @@
             </summary>
             <param name="mediaType"></param>
             <returns></returns>
+        </member>
+        <member name="T:CRIP.Models.CRIPUser">
+            <summary>
+            User
+            </summary>
+        </member>
+        <member name="P:CRIP.Models.Goods.Name">
+            <summary>
+            商品名 
+            </summary>
+        </member>
+        <member name="P:CRIP.Models.Goods.Price">
+            <summary>
+            价格
+            </summary>
+        </member>
+        <member name="P:CRIP.Models.Goods.Info">
+            <summary>
+            商品信息
+            </summary>
+        </member>
+        <member name="P:CRIP.Models.Goods.Quantity">
+            <summary>
+            库存数量
+            </summary>
+        </member>
+        <member name="T:CRIP.Models.OrderStateEnum">
+            <summary>
+            订单状态枚举类型
+            </summary>
+        </member>
+        <member name="T:CRIP.Models.OrderStateTriggerEnum">
+            <summary>
+            订单动作枚举
+            </summary>
         </member>
         <member name="P:CRIP.Database.CRIPDbContext.CRIPUsers">
             <summary>
@@ -245,43 +293,6 @@
         </member>
         <member name="M:CRIP.Migrations.v2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
-        </member>
-        <member name="T:CRIP.Migrations.v3">
-            <inheritdoc />
-        </member>
-        <member name="M:CRIP.Migrations.v3.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:CRIP.Migrations.v3.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:CRIP.Migrations.v3.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="P:CRIP.Models.Goods.Name">
-            <summary>
-            商品名 
-            </summary>
-        </member>
-        <member name="P:CRIP.Models.Goods.Price">
-            <summary>
-            价格
-            </summary>
-        </member>
-        <member name="P:CRIP.Models.Goods.Info">
-            <summary>
-            商品信息
-            </summary>
-        </member>
-        <member name="P:CRIP.Models.Goods.Quantity">
-            <summary>
-            库存数量
-            </summary>
-        </member>
-        <member name="T:CRIP.Models.CRIPUser">
-            <summary>
-            User
-            </summary>
         </member>
         <member name="M:CRIP.Services.IRepositorys.IUserRepository.AddRoleToUserAsync(Microsoft.AspNetCore.Identity.IdentityUserRole{System.String})">
             <summary>

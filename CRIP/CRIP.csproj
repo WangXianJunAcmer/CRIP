@@ -22,6 +22,7 @@
     <PackageReference Include="Qiniu" Version="8.3.0" />
     <PackageReference Include="ServiceStack.Interfaces" Version="6.6.0" />
     <PackageReference Include="StackExchange.Redis" Version="2.6.90" />
+    <PackageReference Include="Stateless" Version="5.13.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.6" />
   </ItemGroup>
