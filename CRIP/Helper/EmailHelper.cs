@@ -26,7 +26,7 @@ namespace CRIP.Helper
             //不和请求一块发送
             client.UseDefaultCredentials = false;
             //验证发件人身份（发件人的邮箱，这里第二个参数就是生成授权码）
-            client.Credentials = new NetworkCredential("3125156343@qq.com", "fartajeuitjrddhg");
+            client.Credentials = new NetworkCredential("3125156343@qq.com", "vqxbetiynvsxdged");
             //发送
             try
             {
