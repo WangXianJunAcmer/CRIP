@@ -27,7 +27,7 @@
 
 
  <RouterLink  to="/Reg"
- style="text-decoration:none;" >  注册</RouterLink>
+ style="text-decoration:none; color: black;" >  注册</RouterLink>
 
  </div>
    </div>
@@ -43,7 +43,7 @@ import { useRouter } from 'vue-router'
 
 
 import {ref} from 'vue'
-import { postLogin } from '../../api/types/common';
+import { postLogin } from '../../api/common';
 //实现路由的跳转
 const router = useRouter()
 
@@ -61,27 +61,20 @@ const submitForm = async () => {
     const logindata = await postLogin(form.value);
     console.log(logindata);
     // 登录成功后跳转到 Main 页面
- 
+    console.log(logindata.data.role);
+    if(logindata.data.role=="OrdinaryUser")
       router.push("/Main");
+      else
+      router.push("/shop");
   
   } catch (error) {
     console.error(error);
   }
 };
 </script>
-<style >
-body {
-    margin: 0;
-    padding: 0;
-    /*设置 body 元素为一个网格布局容器。
-      居中所有内容，包括子元素。
-      元素高度设置为视窗的高度，确保整个页面铺满浏览器。
-      */
-    display: grid;
-    place-items: center;
-    height: 100vh;
-    background-color: #f9f9f9;
-}
+<style  scoped>
+
+
 
 .login-page {
     /* flex-direction: column; 设置弹性盒子的主轴方向为垂直方向。
