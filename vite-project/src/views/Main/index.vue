@@ -12,7 +12,7 @@
         <img src="../../assets/images/智慧医疗.svg" width="60" height="50" alt=" home">
       </a>
     
-      <h1>医者行天下</h1>
+      <h1>医者</h1>
       <nav class="navbar" data-navbar>
         <ul class="navbar-list">
 
@@ -36,7 +36,7 @@
           </li>
 
           <li class="navbar-item">
-            <a href="#drugshop" class="navbar-link" data-nav-link>药物购买</a>
+            <a href="/shop" class="navbar-link" data-nav-link>药物购买</a>
           </li>
 
           <li class="navbar-item">
@@ -50,11 +50,12 @@
         <ion-icon name="menu-outline" aria-hidden="true" class="menu"></ion-icon>
         <ion-icon name="close-outline" aria-hidden="true" class="close"></ion-icon>
       </button>
-     <RouterLink  to="/login" class="btn btn-primary"
- style="text-decoration:none; color: white;" >
- 点击登录
-</RouterLink>
 
+     <RouterLink  :to="loginpath" class="btn btn-primary"
+ style="text-decoration:none; color: white;" >
+{{ loginText }}
+</RouterLink>
+<button  v-if="isButtonVisible" class="btn " style="color:white ;border: none;" @click="logout">{{ logoutText }}</button>
 
 
 
@@ -457,7 +458,7 @@ aria-label="home">
     - #FOOTER
   -->
 
-  <footer class="footer has-bg-image"  id="contact" style="background-image: url('../.../../assets/images/footer-bg.jpg')">
+  <footer class="footer has-bg-image"  id="contact" style="background-image: url('../.../../assets/images/footer-bg.jpg')"  >
     <div class="container">
 
   
@@ -477,9 +478,9 @@ aria-label="home">
   <!-- 
     - #BACK TO TOP
   -->
-
-  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
-    <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon>
+ 
+  <a href="#top"  name="arrow-up-outline" aria-hidden="true"  class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ArrowUpBold  style="width: 1em; height: 1em; margin-right: 1px ;    border-radius:50%"  />
   </a>
 
 
@@ -497,13 +498,27 @@ aria-label="home">
 
 
 <script setup lang='ts'>
-import { onMounted, Ref, ref } from 'vue';
+import { computed, onMounted, Ref, ref } from 'vue';
 import * as echarts from 'echarts';
 import 'echarts/lib/chart/bar';
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
 import 'echarts/lib/component/legend';
 import 'echarts/lib/component/toolbox';
+import { useTestStore } from '../../store';
+
+const isButtonVisible = ref(true);
+const   usermessage= useTestStore();
+
+const logout = () => {
+  isButtonVisible.value=false;
+  usermessage.setName('', '');
+};
+
+const logoutText = computed(() => {
+ 
+  return   usermessage.token ? '退出登录' : '';
+});
 
 
 const drawChart = (container: HTMLElement) => {
@@ -560,23 +575,65 @@ const chartContainer: Ref<HTMLElement | null> = ref(null);
 onMounted(() => {
   const container = chartContainer.value!;
   drawChart(container);
-});
 
 
 
+  
 /**
  * add event on element
  */
-
- const addEventOnElem = function (elem: HTMLElement | NodeList, type: string, callback: EventListenerOrEventListenerObject) {
-  if (elem instanceof NodeList) {
-    for (let i = 0; i < elem.length; i++) {
-      elem[i].addEventListener(type, callback);
+ const addEventOnElem = (elem: Element | NodeListOf<Element> | Window, type: string, callback: () => void) => {
+  if (elem instanceof NodeList || elem instanceof Element) {
+    if (elem instanceof NodeList) {
+      for (let i = 0; i < elem.length; i++) {
+        elem[i].addEventListener(type, callback);
+      }
+    } else {
+      elem.addEventListener(type, callback);
     }
   } else {
     elem.addEventListener(type, callback);
   }
-}
+};
+
+/**
+ * active header & back top btn when window scroll down to 100px
+ */
+const header = document.querySelector("[data-header]") as HTMLElement;
+const backTopBtn = document.querySelector("[data-back-top-btn]") as HTMLElement;
+console.log(document.querySelector("[data-header]"));
+console.log(backTopBtn);
+const activeElemOnScroll = () => {
+  if (window.scrollY > 100) {
+    header.classList.add("active");
+    backTopBtn.classList.add("active");
+  } else {
+    header.classList.remove("active");
+    backTopBtn.classList.remove("active");
+  }
+};
+
+addEventOnElem(window, "scroll", activeElemOnScroll);
+});
+
+
+
+
+
+const  loginpath=computed(
+  ()=>{
+    const user = useTestStore();
+  return user.token ? '/' : '/login';
+
+  })
+
+  const loginText = computed(() => {
+  const user = useTestStore();
+  return user.token ?'我的购物车' : '点击登录';
+});
+
+
+
 
 
 </script>
@@ -585,7 +642,7 @@ onMounted(() => {
 
 
 
-<style >
+<style  >
 
 /*-----------------------------------*\
   #style.css
@@ -615,7 +672,7 @@ onMounted(() => {
 --oxford-blue_50: hsla(222, 47%, 11%, 1);
 --oxford-blue_70: hsla(213, 86%, 16%, 0.7);
 --prussian-blue: hsl(210, 100%, 20%);
---oxford-blue: hsl(213, 86%, 16%);
+--oxford-blue: hsl(211, 56%, 24%);
 --orange-peel: hsl(37, 100%, 50%);
 --cultured_20: hsla(206, 23%, 94%, 0.2);
 --winter-sky: hsl(341, 100%, 60%);
@@ -718,19 +775,6 @@ ion-icon { pointer-events: none; }
 
 address { font-style: normal; }
 
-html {
-font-family: var(--ff-roboto);
-font-size: 10px;
-scroll-behavior: smooth;
-}
-
-body {
-background-color: var(--oxford-blue);
-color: var(--white);
-font-size: 1.6rem;
-line-height: 1.5;
-overflow-x: hidden;
-}
 
 body.active { overflow-y: hidden; }
 

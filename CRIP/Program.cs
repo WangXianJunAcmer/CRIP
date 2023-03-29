@@ -154,6 +154,7 @@ builder.Services
 
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IGoodsRepository, GoodsRepository>();
+builder.Services.AddTransient<ICartRepository, CartRepository>();
 
 
 var app = builder.Build();

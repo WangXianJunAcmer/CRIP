@@ -17,10 +17,11 @@ namespace CRIP.Database
         public DbSet<CRIPUser> CRIPUsers { get; set; }
         public DbSet<Goods> Goods { get; set; }
         public DbSet<Cart> Carts { get; set; }
-        public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<LineItem> LineItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-
+            
             #region 添加管理员
             //更新了原先User的外键变为CRIPUser的外键,绑定CRIPUser外键
             builder.Entity<CRIPUser>
@@ -55,6 +56,7 @@ namespace CRIP.Database
             //Hash密码
             adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, "123456");
             builder.Entity<CRIPUser>().HasData(adminUser);
+
 
             //给管理员用户添加管理员角色
             builder.Entity<IdentityUserRole<string>>().HasData(

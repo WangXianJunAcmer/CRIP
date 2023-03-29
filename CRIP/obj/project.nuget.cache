@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "P8miffz4zdebTjQ1TW1c90l2O+9C+T20seYCA8z4hLzdE/T6pl6SCx5R/kpksXUQbhzNpxgtxGlZa8lJlz8K+g==",
+  "dgSpecHash": "CNObgNgPqkBpxF3lA86sC+tiWvIplosWmv6fkZSryzwWsZgM/5lf31ol7rbBNf7WDPnabSLS8K1FA0y/ysGT3w==",
   "success": true,
   "projectFilePath": "C:\\Users\\西柚西柚西\\Desktop\\virus\\CRIP\\CRIP\\CRIP.csproj",
   "expectedPackageFiles": [
@@ -61,6 +61,7 @@
     "C:\\Users\\西柚西柚西\\.nuget\\packages\\scrutor\\3.3.0\\scrutor.3.3.0.nupkg.sha512",
     "C:\\Users\\西柚西柚西\\.nuget\\packages\\servicestack.interfaces\\6.6.0\\servicestack.interfaces.6.6.0.nupkg.sha512",
     "C:\\Users\\西柚西柚西\\.nuget\\packages\\stackexchange.redis\\2.6.90\\stackexchange.redis.2.6.90.nupkg.sha512",
+    "C:\\Users\\西柚西柚西\\.nuget\\packages\\stateless\\5.13.0\\stateless.5.13.0.nupkg.sha512",
     "C:\\Users\\西柚西柚西\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\西柚西柚西\\.nuget\\packages\\swashbuckle.aspnetcore.filters\\7.0.6\\swashbuckle.aspnetcore.filters.7.0.6.nupkg.sha512",
     "C:\\Users\\西柚西柚西\\.nuget\\packages\\swashbuckle.aspnetcore.filters.abstractions\\7.0.6\\swashbuckle.aspnetcore.filters.abstractions.7.0.6.nupkg.sha512",

@@ -1,5 +1,6 @@
-import request from "../../utils/request";
-
+import request from "../utils/request";
+import { useTestStore } from '../store';
+const Getusername=useTestStore();
 
 //发送验证码业务
 export const postToRegister=async (
@@ -40,9 +41,15 @@ export const postToRegister=async (
 
  //登录业务
  interface ResponseData<T=any>{
-  
-    token:string
-   role:string
+    code: number;
+    msg: string;
+    error: any;
+    data: {
+        
+      role: string;
+      token: string;
+    };
+   
 }
 export const  postLogin =
 async (
@@ -61,4 +68,18 @@ async (
     );
     return res.data;
 
+}
+
+export const getUserSimplifyMessage =()=>{
+    
+    
+    return request(
+    {
+        method:'GET',
+        url:'/api/User',
+        headers:{
+            Authorization: `Bearer ${Getusername.token}`,
+            Accept: 'application/json' 
+        }
+    })
 }

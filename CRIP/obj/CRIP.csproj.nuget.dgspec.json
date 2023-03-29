@@ -82,6 +82,10 @@
               "target": "Package",
               "version": "[2.6.90, )"
             },
+            "Stateless": {
+              "target": "Package",
+              "version": "[5.13.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
