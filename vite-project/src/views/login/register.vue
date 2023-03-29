@@ -51,7 +51,7 @@
 
 <script setup lang='ts'>
 import { reactive, ref } from 'vue'
-import { postToRegister, Register } from '../../api/types/common';
+import { postToRegister, Register } from '../../api/common';
 
 
 //表单里的属性
@@ -129,7 +129,7 @@ const submitForm = async () => {
 </script>
 
 
-<style  >
+<style  scoped>
 body {
     margin: 0;
     padding: 0;

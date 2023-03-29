@@ -20,11 +20,7 @@
 </script>
 
 
-<style lang='scss' scoped>
-* {
-    /* 初始化 */
-    margin: 0;
-    padding: 0;
-}
+<style lang='scss' >
+
 
 </style>

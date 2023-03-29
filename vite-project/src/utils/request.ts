@@ -47,8 +47,11 @@ request.interceptors.request.use(function (config) {
     if (response.data.data.role && response.data.data.token) {
       const role = response.data.data.role
       const tokenmessage = response.data.data.token
+   
       const UseName = useTestStore()
+  
       UseName.setName(role, tokenmessage)
+
     }
   
   

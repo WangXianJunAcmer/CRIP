@@ -1,5 +1,163 @@
 <script setup lang='ts'>
+import { onMounted, reactive, ref, watch } from 'vue';
+import { getUserSimplifyMessage } from './../../api/common'
+import { getData } from './../../api/drug'
+import { IlistParams } from "../../api/types/type";
+import {Drugs } from "../../api/types/type";
+import Itemdetails from './item-detail.vue'
 
+
+//分页
+// 改变页码的方法
+const handleCurrentChange = (page: number) => {
+  listParams.PageNumber = page
+  loadList(listParams)
+}
+//每页大小改变的事件
+const handleSizeChange = (size: number) => {
+  listParams.PageSize = size
+  listParams.PageNumber = 1
+  loadList(listParams)
+}
+
+// namechange
+const NameChange=(value:string)=>{
+
+listParams.OrderBy=value
+console.log(listParams.OrderBy)
+finddrug ()
+}
+
+
+
+onMounted(() => {
+
+getusermessage()
+loadList(listParams)
+
+//  loadList("wsn")
+
+}) 
+//查询药品
+const state = ref('')
+const restaurants = ref<RestaurantItem[]>([])
+  const usermessage = ref('')
+const listcount = ref(0)
+const listDrugMessage = ref<Drugs[]>([])
+interface RestaurantItem {
+  id: string;
+ value: string;
+  price: number;
+  info: string;
+  quantity: number;
+  link: {
+    href: string | null;
+    rel: string;
+    method: string;
+  };
+
+}
+interface herdermessage {
+  currentPage: number
+  nextPageLink: string
+  pageSize: number
+  previousPageLink: string
+  totalCount: number
+  totalPages: number
+}
+
+const listParams = reactive({
+  keyword: 'w',
+  OrderBy:'place',
+  Desc: true,
+  PageNumber: 1,
+  PageSize: 8,
+
+})
+
+const querySearch = (queryString: string, cb: any) => {
+  console.log(queryString)
+const results = queryString
+  ? restaurants.value.filter(createFilter(queryString))
+  : restaurants.value
+console.log("result----" + results)
+// call callback function to return suggestions
+cb(results)
+}
+const createFilter = (queryString: string) => {
+return (restaurant: RestaurantItem) => {
+  return (
+    restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
+
+  )
+}
+
+}
+
+watch(state, async () => {
+  let datalist = ref<RestaurantItem[]>([])
+ console.log( state.value)
+  if (state.value.length != 0) {
+    listParams.keyword = state.value
+    const getvalue = await getData(listParams)
+
+
+
+    datalist.value = getvalue.goodss.map((item: { id: any;  name: any; price: any; link: any; }) => {
+      return {
+        id: item.id,
+      
+        value: item.name,
+        price: item.price,
+        link: item.link
+      }
+
+    })
+
+  }
+  restaurants.value = datalist.value
+
+
+
+})
+
+const handleSelect = (item: RestaurantItem) => {
+  console.log("item---------" + item)
+}
+
+
+
+const loadList = async (listParams: IlistParams) => {
+
+const data = await getData(listParams)
+
+const headermess: herdermessage = JSON.parse(data.headers['x-pagination'])
+
+listcount.value = headermess.totalCount
+
+
+listDrugMessage.value = data.goodss
+
+}
+
+const finddrug = () => {
+
+listParams.keyword = state.value
+loadList(listParams)
+}
+
+
+
+
+// 获取用户的用户名
+
+const getusermessage = async () => {
+
+const username = await getUserSimplifyMessage()
+usermessage.value = username.data.data.userMessage.userName
+
+
+}
 </script>
 
 
@@ -16,16 +174,42 @@
       <a href="#" class="logo">
         <img src="../../assets/images/智慧医疗.svg" width="132" height="27" alt="shoppie home">
       </a>
+      <div 
+      style="display: flex;">
 
+        <el-autocomplete   
+        v-model="state"         :fetch-suggestions="querySearch" :trigger-on-focus="true"  clearable
+        @select="finddrug"
+      placeholder="药品查询"
+     
+     
+     >
+     <template #prefix>
+<el-icon  >
+ <Search />
+</el-icon>
+</template>
+   </el-autocomplete>
+   <el-button
+   @click="finddrug"
+   type="primary"
+   size="large"
+   style=" height: 58px;
+   width: 100px;
+    margin-left: 12px;"  plain>查询</el-button>
+      </div>
+
+  
       <nav class="navbar" data-navbar>
      
+        
         <button class="cart-btn">
           <ion-icon name="bag" aria-hidden="true"></ion-icon>
 
           <span class="span">购物车</span>
         </button>
 
-        <a href="#" class="btn">西柚西柚西</a>
+        <a href="#" class="btn"> {{ usermessage }}</a>
       </nav>
 
       <button class="nav-open-btn" aria-label="toggle menu" data-nav-toggler>
@@ -42,115 +226,7 @@
 
 
 
-      <!-- 
-        - #PRODUCT
-      -->
-
-      <section class="section product" aria-label="product">
-        <div class="container">
-
-          <h2 class="h2 section-title title text-center">流感感冒药</h2>
-
-          <ul class="product-list has-scrollbar">
-
-            <li class="scrollbar-item">
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="../../assets/images/product-1.png" width="448" height="470" loading="lazy"
-                      alt="Short Sleeve Shirt" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-
-                  <h3 class="h4 title">
-                    <a href="#" class="card-title">Short Sleeve Shirt</a>
-                  </h3>
-
-                  <span class="price">$170.00</span>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li class="scrollbar-item">
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="../../assets/images/product-2.png" width="448" height="470" loading="lazy"
-                      alt="Dead Sunglasses" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-
-                  <h3 class="h4 title">
-                    <a href="#" class="card-title">Dead Sunglasses</a>
-                  </h3>
-
-                  <span class="price">$210.00</span>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li class="scrollbar-item">
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="../../assets/images/product-3.png" width="448" height="470" loading="lazy"
-                      alt="Studios Trouser" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-
-                  <h3 class="h4 title">
-                    <a href="#" class="card-title">Studios Trouser</a>
-                  </h3>
-
-                  <span class="price">$90.00</span>
-
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </div>
-      </section>
-
+  
 
 
 
@@ -159,387 +235,25 @@
         - #FEATURE
       -->
 
-      <section class="section feature" aria-label="feature-label">
-        <div class="container">
-
-          <h2 class="h2 section-title title text-center" id="feature-label">疏痛缓胃</h2>
-
-          <ul class="feature-list">
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="../../assets/images/product-4.png" width="448" height="470" loading="lazy"
-                      alt="Acne Baseball Cap" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Acne Baseball Cap</a>
-                  </h3>
-
-                  <span class="price">$80.00</span>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="../../assets/images/product-5.png" width="448" height="470" loading="lazy"
-                      alt="Short Sleeve Shirt" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Short Sleeve Shirt</a>
-                  </h3>
-
-                  <span class="price">$170.00</span>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="../../assets/images/product-6.png" width="448" height="470" loading="lazy"
-                      alt="Garcons Parfums" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Garcons Parfums</a>
-                  </h3>
-
-                  <span class="price">$190.00</span>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="../../assets/images/product-7.png" width="448" height="470" loading="lazy"
-                      alt="Salomon Sneaker" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Salomon Sneaker</a>
-                  </h3>
-
-                  <span class="price">$450.00</span>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="../../assets/images/product-8.png" width="448" height="470" loading="lazy"
-                      alt="Ribbed Beanie Hat" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Ribbed Beanie Hat</a>
-                  </h3>
-
-                  <span class="price">$120.00</span>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="../../assets/images/product-9.png" width="448" height="470" loading="lazy" alt="Acronym Khaki"
-                      class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Acronym Khaki</a>
-                  </h3>
-
-                  <span class="price">$220.00</span>
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-          <a href="#" class="btn btn-secondary">View All Products</a>
-
-        </div>
+      <section class="section feature" aria-label="feature-label"
+      style="
+        display: flex;
+  flex-direction: column;
+  align-items: center;
+      "
+      >
+        
+        <Itemdetails :list="listDrugMessage" />
+        <el-pagination :page-sizes="[4, 8, 12]" :small=false background
+            layout="total, sizes, prev, pager, next, jumper" :total="listcount" style="margin-top:25px;
+            font-size: 35px;"
+            v-model:currentPage="listParams.PageNumber" v-model:page-size="listParams.PageSize"
+            @size-change="handleSizeChange" @current-change="handleCurrentChange" />
       </section>
 
 
-   <!-- 
-        - #FEATURE
-      -->
-
-      <section class="section feature" aria-label="feature-label">
-        <div class="container">
-
-          <h2 class="h2 section-title title text-center" id="feature-label">疏痛缓胃</h2>
-
-          <ul class="feature-list">
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="../../assets/images/product-4.png" width="448" height="470" loading="lazy"
-                      alt="Acne Baseball Cap" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Acne Baseball Cap</a>
-                  </h3>
-
-                  <span class="price">$80.00</span>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="../../assets/images/product-5.png" width="448" height="470" loading="lazy"
-                      alt="Short Sleeve Shirt" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Short Sleeve Shirt</a>
-                  </h3>
-
-                  <span class="price">$170.00</span>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="../../assets/images/product-6.png" width="448" height="470" loading="lazy"
-                      alt="Garcons Parfums" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Garcons Parfums</a>
-                  </h3>
-
-                  <span class="price">$190.00</span>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="../../assets/images/product-7.png" width="448" height="470" loading="lazy"
-                      alt="Salomon Sneaker" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Salomon Sneaker</a>
-                  </h3>
-
-                  <span class="price">$450.00</span>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="../../assets/images/product-8.png" width="448" height="470" loading="lazy"
-                      alt="Ribbed Beanie Hat" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Ribbed Beanie Hat</a>
-                  </h3>
-
-                  <span class="price">$120.00</span>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="../../assets/images/product-9.png" width="448" height="470" loading="lazy" alt="Acronym Khaki"
-                      class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Acronym Khaki</a>
-                  </h3>
-
-                  <span class="price">$220.00</span>
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-          <a href="#" class="btn btn-secondary">View All Products</a>
-
-        </div>
-      </section>
-
+      
+  
 
 
 
@@ -696,7 +410,7 @@ scroll-behavior: smooth;
 }
 
 body {
-background-color: var(--bg-white);
+
 color: var(--text-eerie-black-2);
 font-size: 1.6rem;
 line-height: 1.5;
@@ -718,7 +432,7 @@ position: absolute;
 }
 
 .title {
-font-family: var(--fontFamily-clashDisplay);
+font-family: var( 'ClashDisplay', cursive);
 font-weight: var(--weight-semiBold);
 line-height: 1.2;
 }
@@ -777,7 +491,8 @@ object-fit: cover;
 
 .text-center { text-align: center; }
 
-.section-title { margin-block-end: 45px; }
+.section-title { margin-block-end: 45px;
+margin-block-start: 150px; }
 
 .product-btn {
 position: absolute;
@@ -1220,7 +935,9 @@ right: 0;
  * HEADER
  */
 
-.header { padding-block: 0; }
+.header { padding-block: 0; 
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
 .header .container { border-block-end: 2px solid var(--border-eerie-black); }
 
@@ -1332,7 +1049,7 @@ right: 0;
  * FEATURE
  */
 
-.feature-list { grid-template-columns: repeat(3, 1fr); }
+.feature-list { grid-template-columns: repeat(4, 1fr); }
 
 
 
@@ -1415,6 +1132,17 @@ right: 0;
  */
 
 .footer-bottom-link { font-size: 1.6rem; }
+
+}
+
+
+ .el-autocomplete  {
+   
+    width:500px;
+}
+
+.el-input__wrapper  {
+      height: 60px;
 
 }
 </style>
