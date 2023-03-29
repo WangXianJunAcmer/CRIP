@@ -68,7 +68,7 @@ interface herdermessage {
 
 const listParams = reactive({
   keyword: 'w',
-  OrderBy:'place',
+  OrderBy:'price',
   Desc: true,
   PageNumber: 1,
   PageSize: 8,
