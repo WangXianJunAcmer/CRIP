@@ -775,6 +775,15 @@
           "lib/net5.0/StackExchange.Redis.dll": {}
         }
       },
+      "Stateless/5.13.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Stateless.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Stateless.dll": {}
+        }
+      },
       "Swashbuckle.AspNetCore/6.2.3": {
         "type": "package",
         "dependencies": {
@@ -2586,6 +2595,32 @@
         "stackexchange.redis.nuspec"
       ]
     },
+    "Stateless/5.13.0": {
+      "sha512": "M4Rb4b31TUEfhCd4en0WlRfuFgQ2rwva9e1CuXnto5vNGvRsNVimHENnvjegf6nKG9ZH+51McAZ/huqRtTziYg==",
+      "type": "package",
+      "path": "stateless/5.13.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Stateless.png",
+        "lib/net40/Stateless.dll",
+        "lib/net40/Stateless.xml",
+        "lib/net45/Stateless.dll",
+        "lib/net45/Stateless.xml",
+        "lib/net472/Stateless.dll",
+        "lib/net472/Stateless.xml",
+        "lib/net5.0/Stateless.dll",
+        "lib/net5.0/Stateless.xml",
+        "lib/net6.0/Stateless.dll",
+        "lib/net6.0/Stateless.xml",
+        "lib/netstandard1.0/Stateless.dll",
+        "lib/netstandard1.0/Stateless.xml",
+        "lib/netstandard2.0/Stateless.dll",
+        "lib/netstandard2.0/Stateless.xml",
+        "stateless.5.13.0.nupkg.sha512",
+        "stateless.nuspec"
+      ]
+    },
     "Swashbuckle.AspNetCore/6.2.3": {
       "sha512": "cnzQDn0Le+hInsw2SYwlOhOCPXpYi/szcvnyqZJ12v+QyrLBwAmWXBg6RIyHB18s/mLeywC+Rg2O9ndz0IUNYQ==",
       "type": "package",
@@ -4106,6 +4141,7 @@
       "Qiniu >= 8.3.0",
       "ServiceStack.Interfaces >= 6.6.0",
       "StackExchange.Redis >= 2.6.90",
+      "Stateless >= 5.13.0",
       "Swashbuckle.AspNetCore >= 6.2.3",
       "Swashbuckle.AspNetCore.Filters >= 7.0.6"
     ]
@@ -4190,6 +4226,10 @@
           "StackExchange.Redis": {
             "target": "Package",
             "version": "[2.6.90, )"
+          },
+          "Stateless": {
+            "target": "Package",
+            "version": "[5.13.0, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
