@@ -43,8 +43,6 @@ namespace CRIP.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
         //用户仓库
         private readonly IUserRepository _userRepository;
-        //购物车仓库
-        private readonly ICartRepository _cartRepository;
         public UserController(
             IConfiguration configuration,
             UserManager<CRIPUser> userManager,
@@ -53,7 +51,6 @@ namespace CRIP.Controllers
             IHttpContextAccessor httpContextAccessor,
             RedisHelper client,
             IUserRepository userRepository,
-            ICartRepository cartRepository,
             IMapper mapper
         )
         {
@@ -65,7 +62,6 @@ namespace CRIP.Controllers
             _redis = client.GetDatabase();
             _userRepository = userRepository;
             _mapper = mapper;
-            _cartRepository = cartRepository;
         }
         #endregion
 
@@ -243,13 +239,6 @@ namespace CRIP.Controllers
                 UserName = registerParameter.UserName,
                 Email = registerParameter.Email
             };
-
-            Cart cart = new Cart()
-            {
-                Id = Guid.NewGuid().ToString(),
-                UserId = user.Id
-            };
-            await _cartRepository.AddEntityAsync(cart);
             //将用户插入到表里，并Hash密码
             var Res = await _userManager.CreateAsync(user, registerParameter.Password);
 

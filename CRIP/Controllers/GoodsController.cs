@@ -149,7 +149,7 @@ namespace CRIP.Controllers
                     "GET"
                 ));
 
-            // "api/Routes"
+            // "api/touristRoutes"
             // 添加创建旅游路线
             links.Add(new LinkDto(
                     Url.Link("CreateGoods", null),
@@ -400,7 +400,7 @@ namespace CRIP.Controllers
         public async Task<IActionResult> PartiallyUpdataGoods(
             [FromQuery] string goodsId,
             [FromBody] JsonPatchDocument<GoodsUpdateDto> jsonPatchDocument
-            //将jsonPatch格式数据补全成RouteForUpdateDto对象
+            //将jsonPatch格式数据补全成TouristRouteForUpdateDto对象
             )
         { PagesResponse pagesResponse = new PagesResponse();
             var goodsRepo = await _goodsRepository.GetByIdAsync(goodsId);
@@ -410,7 +410,7 @@ namespace CRIP.Controllers
                 return Ok(pagesResponse);
             }
             var goodsToPatchRepo = _mapper.Map<GoodsUpdateDto>(goodsRepo);
-            //将jsonpatch生成的RouteForUpdateDto对象中的部分数据补全到从数据仓库中获得的对象
+            //将jsonpatch生成的TouristRouteForUpdateDto对象中的部分数据补全到从数据仓库中获得的对象
             jsonPatchDocument.ApplyTo(goodsToPatchRepo, ModelState);
 
             if (!TryValidateModel(goodsToPatchRepo))

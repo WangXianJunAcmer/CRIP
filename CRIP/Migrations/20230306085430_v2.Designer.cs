@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRIP.Migrations
 {
     [DbContext(typeof(CRIPDbContext))]
-    [Migration("20230328124801_v2")]
+    [Migration("20230306085430_v2")]
     partial class v2
     {
         /// <inheritdoc />
@@ -94,126 +94,16 @@ namespace CRIP.Migrations
                         {
                             Id = "90184155-dee0-40c9-bb1e-b5ed07afc04e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fcdbb208-6fc3-49b6-a040-a7f91f5b5bb7",
+                            ConcurrencyStamp = "b91d85d0-66a3-463a-a19c-72ab1b09158e",
                             Email = "CRIPAdmin@qq.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEG/Z3OcQVneFsvhwyRdExOeSr9L+aiA3iPF4KQ41jtOyl0MgQ9W8YG6RX15KDvNuCw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKTYPl48WHXAwyrAvFV02dRwlorWsrZyLm7WVZk6XKCRcz/EDOj0p9/y7G0shoe1Fg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5d5d229b-3893-43a2-ba38-dbdc2ff56d58",
+                            SecurityStamp = "4ec20084-9484-4c3a-9c2c-c6f244ea2621",
                             TwoFactorEnabled = false,
                             UserName = "Admin@qq.com"
                         });
-                });
-
-            modelBuilder.Entity("CRIP.Models.Cart", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CripUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CripUserId");
-
-                    b.ToTable("Carts");
-                });
-
-            modelBuilder.Entity("CRIP.Models.Goods", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Info")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Goods");
-                });
-
-            modelBuilder.Entity("CRIP.Models.LineItem", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CartId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("GoodsId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("OrderId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CartId");
-
-                    b.HasIndex("GoodsId");
-
-                    b.HasIndex("OrderId");
-
-                    b.ToTable("LineItems");
-                });
-
-            modelBuilder.Entity("CRIP.Models.Order", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreateDateUTC")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("State")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -246,14 +136,14 @@ namespace CRIP.Migrations
                         new
                         {
                             Id = "308660dc-ae51-480f-824d-7dca6714c3e2",
-                            ConcurrencyStamp = "73a93903-19a8-4100-875d-efcca903b2bf",
+                            ConcurrencyStamp = "b180a09a-e301-453f-b240-c72f38528b41",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "ce82c36a-ca40-8e0a-3b89-53dc06850c3c",
-                            ConcurrencyStamp = "2facbcbe-123b-4b9c-a3cd-8ad003d6dfb2",
+                            ConcurrencyStamp = "af6fb748-9e24-4e84-acfd-0064f10278ba",
                             Name = "OrdinaryUser",
                             NormalizedName = "ORDINARYUSER"
                         });
@@ -397,45 +287,6 @@ namespace CRIP.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("CRIP.Models.Cart", b =>
-                {
-                    b.HasOne("CRIP.Models.CRIPUser", "CripUser")
-                        .WithMany()
-                        .HasForeignKey("CripUserId");
-
-                    b.Navigation("CripUser");
-                });
-
-            modelBuilder.Entity("CRIP.Models.LineItem", b =>
-                {
-                    b.HasOne("CRIP.Models.Cart", null)
-                        .WithMany("CartItems")
-                        .HasForeignKey("CartId");
-
-                    b.HasOne("CRIP.Models.Goods", "Goods")
-                        .WithMany()
-                        .HasForeignKey("GoodsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CRIP.Models.Order", null)
-                        .WithMany("OrderLineItems")
-                        .HasForeignKey("OrderId");
-
-                    b.Navigation("Goods");
-                });
-
-            modelBuilder.Entity("CRIP.Models.Order", b =>
-                {
-                    b.HasOne("CRIP.Models.CRIPUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -512,16 +363,6 @@ namespace CRIP.Migrations
                     b.Navigation("Tokens");
 
                     b.Navigation("UserRoles");
-                });
-
-            modelBuilder.Entity("CRIP.Models.Cart", b =>
-                {
-                    b.Navigation("CartItems");
-                });
-
-            modelBuilder.Entity("CRIP.Models.Order", b =>
-                {
-                    b.Navigation("OrderLineItems");
                 });
 #pragma warning restore 612, 618
         }
