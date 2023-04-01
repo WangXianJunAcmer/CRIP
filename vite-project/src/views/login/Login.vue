@@ -1,6 +1,9 @@
 <template>
+<div
+style="display: grid; place-items: center; height: 100vh;"
 
-        <div class="login-page" >
+>
+  <div class="login-page" >
             
 
             <form :model="form">
@@ -31,6 +34,8 @@
 
  </div>
    </div>
+</div>
+    
     
    
 </template>

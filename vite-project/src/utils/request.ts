@@ -17,7 +17,7 @@ request.interceptors.request.use(function (config) {
     //统一设置用户身份token
   
 
-  
+
   
 
   
@@ -43,16 +43,27 @@ request.interceptors.request.use(function (config) {
       message: response.data.msg,
       type: 'success',
     })
-    //处理role
     if (response.data.data.role && response.data.data.token) {
       const role = response.data.data.role
       const tokenmessage = response.data.data.token
-   
+  
       const UseName = useTestStore()
   
       UseName.setName(role, tokenmessage)
 
     }
+
+      //处理userMessage
+if (response.data.data.userMessage && response.data.data.userMessage.userName) {
+  const userName = response.data.data.userMessage.userName
+  const store = useTestStore()
+ console.log("xingmaaaaaaaaaaa",userName)
+  store.setUSERmessage(userName)
+  console.log(store.username)
+}
+   
+  
+   
   
   
   

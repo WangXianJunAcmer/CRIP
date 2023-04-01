@@ -7,7 +7,10 @@ Desc:boolean,
 PageNumber:number,
 PageSize:number
 }
-
+export interface userMessage{
+     userName:string
+      email: string
+}
 export interface Drugs {
     id: string;
     name: string;
@@ -24,4 +27,13 @@ export interface Drugs {
 export interface Header{
     "set-cookie"?: string[],
   'x-pagination':string
+  }
+  export interface cartitem{
+    id:string,
+    goodsId:string,
+    cartId:string,
+    orderId:string,
+    title:string,
+    price:number
+ 
   }

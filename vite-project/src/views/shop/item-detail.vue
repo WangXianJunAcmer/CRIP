@@ -1,5 +1,7 @@
 <script setup lang='ts'>
-import { Drugs } from '../../api/types/type';
+import { Addtocart } from '../../api/shop';
+import { cartitem, Drugs } from '../../api/types/type';
+import { cartStore } from '../../store';
 
 
 defineProps<{
@@ -8,6 +10,37 @@ defineProps<{
 list:Drugs[]
 
 }>()
+
+//加入购物车事件
+const addToCart=(id:string)=>{
+  Addtocart(id).then(response => {
+      console.log(response);
+      // 处理添加购物车成功后的逻辑
+      console.log(response.data.id)
+    const cartlist = cartStore();
+    const cartItem: cartitem = {
+ ...response.data,
+
+};
+ console.log(cartItem)
+ console.log("添加到")
+    cartlist.addToCart(cartItem)
+    console.log(cartlist.cart)
+
+
+
+
+
+
+      
+    })
+    .catch(error => {
+      console.log(error);
+      // 处理添加购物车失败后的逻辑
+    })
+ 
+
+}
 </script>
 
 
@@ -27,8 +60,8 @@ list:Drugs[]
           <img src="../../assets/images/product-4.png" width="448" height="470" loading="lazy"
             alt="Acne Baseball Cap" class="img-cover">
         </figure>
-
-        <a href="#" class="btn product-btn">
+      
+        <a href="#" class="btn product-btn"   @click.prevent="addToCart(item.id)" >
           <ion-icon name="bag" aria-hidden="true"></ion-icon>
 
           <span class="span">加入购物车</span>

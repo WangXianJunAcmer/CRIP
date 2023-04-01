@@ -25,15 +25,12 @@ body {
       居中所有内容，包括子元素。
       元素高度设置为视窗的高度，确保整个页面铺满浏览器。
       */
-    display: grid;
-    place-items: center;
-    height: 100vh;
+   
+    background-color:#576495;
 
-    background-color: hsl(213, 61%, 28%);
-color:white;
 font-size: 1.6rem;
 line-height: 1.5;
-overflow-x: hidden;
+
    
 }
 

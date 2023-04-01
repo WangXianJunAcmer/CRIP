@@ -9,6 +9,12 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Main',
         component: () => import('../views/Main/index.vue'),
     },
+    {
+        //地址和component是必传的
+        path: '/test',
+        name: 'test',
+        component: () => import('../views/test.vue'),
+    },
 
 
     {

@@ -2,7 +2,8 @@ import { createApp, toRaw } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { createPinia, PiniaPluginContext } from 'pinia'
-
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 
 // 全局引入图标
 import * as ElIcons from '@element-plus/icons'
@@ -88,6 +89,6 @@ for (const name in ElIcons) {
 }
 
 
-app.use(router).use(store).mount('#app')
+app.use(router).use(ElementPlus).use(store).mount('#app')
 
 

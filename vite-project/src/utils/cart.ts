@@ -10,13 +10,13 @@ import { useTestStore } from '../store';
 // import  {  AxiosResponseHeaders}  from './../api/types/common'
 
 // 创建实例
-const requestArea = axios.create({
+const requestCart = axios.create({
   //配置对象
   // baseURL: import.meta.env.VITE_API_BASEURL
   // baseURL: '/auth'
 })
 // 请求拦截器an
-requestArea.interceptors.request.use(function (config) {
+requestCart.interceptors.request.use(function (config) {
 
 
   return config;
@@ -30,7 +30,7 @@ requestArea.interceptors.request.use(function (config) {
 });
 
 // 相应拦截器
-requestArea.interceptors.response.use(function (response) {
+requestCart.interceptors.response.use(function (response) {
   //统一处理接口响应错误，比如token过期无效，服务端异常
 
 
@@ -89,24 +89,7 @@ requestArea.interceptors.response.use(function (response) {
   return Promise.reject(error);
 
 });
-export default <T = any>(config: AxiosRequestConfig) => {
-
-  return requestArea(config)
-    .then(res => {
-
-      let { headers, data: { data: { goodss } } } = res
-
-      let hd = { headers, goodss }
-      console.log(hd)
-
-      return hd
-    })
-
-
-
-
-
-};
+export default requestCart
 
 
 
