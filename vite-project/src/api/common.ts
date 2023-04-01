@@ -1,5 +1,6 @@
 import request from "../utils/request";
 import { useTestStore } from '../store';
+import { userMessage } from "./types/type";
 const Getusername=useTestStore();
 
 //发送验证码业务
@@ -73,7 +74,18 @@ async (
 export const getUserSimplifyMessage =()=>{
     
     
-    return request(
+    return request<
+    {
+
+        data:
+        {
+          userMessage:  userMessage
+
+        }
+
+    }
+  
+    >(
     {
         method:'GET',
         url:'/api/User',

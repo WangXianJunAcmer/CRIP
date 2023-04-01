@@ -5,6 +5,9 @@ import { getData } from './../../api/drug'
 import { IlistParams } from "../../api/types/type";
 import {Drugs } from "../../api/types/type";
 import Itemdetails from './item-detail.vue'
+import { useTestStore } from '../../store';
+import { use } from 'echarts';
+import router from '../../router';
 
 
 //分页
@@ -146,15 +149,19 @@ listParams.keyword = state.value
 loadList(listParams)
 }
 
+const toCart=()=>{
+  router.push("/cart")
+}
 
 
 
 // 获取用户的用户名
 
-const getusermessage = async () => {
+const getusermessage = () => {
 
-const username = await getUserSimplifyMessage()
-usermessage.value = username.data.data.userMessage.userName
+const user=useTestStore()
+usermessage.value = user.username
+console.log("姓名",usermessage.value)
 
 
 }
@@ -197,13 +204,13 @@ usermessage.value = username.data.data.userMessage.userName
    style=" height: 58px;
    width: 100px;
     margin-left: 12px;"  plain>查询</el-button>
-      </div>
+    </div>
 
   
       <nav class="navbar" data-navbar>
      
         
-        <button class="cart-btn">
+        <button  @click="toCart" class="cart-btn">
           <ion-icon name="bag" aria-hidden="true"></ion-icon>
 
           <span class="span">购物车</span>

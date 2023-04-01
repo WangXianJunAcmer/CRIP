@@ -505,7 +505,8 @@ import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
 import 'echarts/lib/component/legend';
 import 'echarts/lib/component/toolbox';
-import { useTestStore } from '../../store';
+import { cartStore, useTestStore } from '../../store';
+import { getUserSimplifyMessage } from '../../api/common';
 
 const isButtonVisible = ref(true);
 const   usermessage= useTestStore();
@@ -513,6 +514,11 @@ const   usermessage= useTestStore();
 const logout = () => {
   isButtonVisible.value=false;
   usermessage.setName('', '');
+  usermessage.setUSERmessage('')
+  const qingkong=cartStore()
+  qingkong.clearCart();
+
+
 };
 
 const logoutText = computed(() => {
@@ -573,6 +579,8 @@ const drawChart = (container: HTMLElement) => {
 const chartContainer: Ref<HTMLElement | null> = ref(null);
 
 onMounted(() => {
+getUserSimplifyMessage()
+
   const container = chartContainer.value!;
   drawChart(container);
 
@@ -623,7 +631,7 @@ addEventOnElem(window, "scroll", activeElemOnScroll);
 const  loginpath=computed(
   ()=>{
     const user = useTestStore();
-  return user.token ? '/' : '/login';
+  return user.token ? '/cart' : '/login';
 
   })
 
@@ -642,7 +650,7 @@ const  loginpath=computed(
 
 
 
-<style  >
+<style   >
 
 /*-----------------------------------*\
   #style.css

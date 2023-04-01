@@ -1,51 +1,54 @@
 <template>
-    <div class="reg-page">
+    <div style="display: grid; place-items: center; height: 100vh;">
+        <div class="reg-page">
 
-        <form :model="form">
+<form :model="form">
 
-            <h1> 注册</h1>
-
-
-            <input placeholder="请输入用户名" type="text" v-model="form.username">
-            <input placeholder="请输入邮箱" type="text" v-model="form.email">
+    <h1> 注册</h1>
 
 
-            <input placeholder="请输入密码" type="password" v-model="form.password">
-            <input placeholder="请再次输入密码" type="password" v-model="form.confirmPassword">
-            <div>
-                <input type="text"  placeholder="验证码" style="width:50%" 
-                v-model="form.code"
-                >
+    <input placeholder="请输入用户名" type="text" v-model="form.username">
+    <input placeholder="请输入邮箱" type="text" v-model="form.email">
 
-                <el-button 
-                :type="message.type" 
-                :disabled="message.isDisabled"
-                 class="sendEmailButton" style="float:right; height: 40px;
-                                             "
+
+    <input placeholder="请输入密码" type="password" v-model="form.password">
+    <input placeholder="请再次输入密码" type="password" v-model="form.confirmPassword">
+    <div>
+        <input type="text"  placeholder="验证码" style="width:50%" 
+        v-model="form.code"
+        >
+
+        <el-button 
+        type="primary" 
+        :disabled="message.isDisabled"
+         class="sendEmailButton" style="float:right; height: 40px;
+                                     "
 
 @click="SendEmailToRegister()"
-                   >{{message.tips}}</el-button>
-            </div>
-
-
-
-
-        </form>
-
-
-
-
-        <button   style="width: 95%;"
-        @click="submitForm()">
-
-            注册
-        </button>
-        <RouterLink to="/Login" style="text-decoration:none; ">已有账号，返回登录 </RouterLink>
-
-
-
-
+           >{{message.tips}}</el-button>
     </div>
+
+
+
+
+</form>
+
+
+
+
+<button   style="width: 95%;"
+@click="submitForm()">
+
+    注册
+</button>
+<RouterLink to="/Login" style="text-decoration:none; ">已有账号，返回登录 </RouterLink>
+
+
+
+
+</div>
+    </div>
+  
 </template>
 
 
@@ -80,7 +83,7 @@ const SendEmailToRegister = async () => {
              
                   message.display = true; //起初
                   message.isDisabled = true;
-                  message.type = "info";
+              
                   let interval = window.setInterval(function () {
                          
                         message.tips = "" + message.number + "秒后重新发送";
@@ -90,7 +93,7 @@ const SendEmailToRegister = async () => {
                               message.number = 60;
                               message.isDisabled = false;
                               window.clearInterval(interval);
-                              message.type = "primary";
+                           
                         }
                   }, 1000);
 
@@ -105,7 +108,7 @@ const message = reactive({
       number: 60,
       display: false,
       isDisabled: false,
-      type: "primary"
+ 
 })
 
 
