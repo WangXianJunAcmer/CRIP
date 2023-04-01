@@ -12,7 +12,7 @@
         <img src="../../assets/images/智慧医疗.svg" width="60" height="50" alt=" home">
       </a>
     
-      <h1>医者</h1>
+      <h1>Medical</h1>
       <nav class="navbar" data-navbar>
         <ul class="navbar-list">
 
@@ -79,26 +79,26 @@ aria-label="home">
 
           <div class="hero-content">
 
-            <h1 class="h1 hero-title">新冠肺炎感染人数</h1>
+            <h1 class="h1 hero-title">流感感染人数</h1>
 
             <p class="hero-text">
         全球统计
             </p>
 
-            <data class="counter" value="960708">960708</data>
+            <data class="counter" value="960708">每年数千万以上</data>
 
             <ul class="hero-list">
 
               <li class="hero-list-item yellow">
-              现有人数 <span class="span">799571</span>
+              重症比率 <span class="span">10%-20%</span>
               </li>
 
               <li class="hero-list-item green">
-                康复人数 <span class="span">302826</span>
+                传播速度 <span class="span">几小时内</span>
               </li>
 
               <li class="hero-list-item red">
-                死亡人数 <span class="span">52558</span>
+                死亡人数 <span class="span">20-500万之间</span>
               </li>
 
             </ul>
@@ -134,48 +134,51 @@ aria-label="home">
 
           <div class="about-content">
 
-            <p class="about-subtitle" id="about-label-1">新型冠状病毒</p>
+            <p class="about-subtitle" id="about-label-1">季节性流感</p>
 
-            <h2 class="h2 section-title">新冠简介</h2>
+            <h2 class="h2 section-title">流感简介</h2>
 
             <p class="section-text text">
-              新型冠状病毒，是指先前尚未在人类中发现的冠状病毒，由这一病毒导致的疾病正式命名为2019冠状病毒病（Corona Virus Disease 2019,COVID-19）。
+              流感，也称为季节性流感，是一种由流感病毒引起的急性呼吸道感染。
             </p>
 
             <ul class="about-list">
 
               <li class="about-item">
                 <figure class="item-img img-holder" style="--width: 80; --height: 80;">
-                  <img src="../../assets/imagesabout-1-1.jpg" width="80" height="80" loading="lazy" alt="Human Contact">
+                  <img src="../../assets/images/about-1-1.jpg" width="80" height="80" loading="lazy" alt="Human Contact">
                 </figure>
 
                 <div class="item-content">
                   <h3 class="h4 item-title">传播方式</h3>
 
                   <p class="item-text text">
-                    新型冠状病毒是通过呼吸道飞沫和接触等方式进行传播。而最为我们所知的病例多可以追踪到与确诊的病例有过近距离密切接触的情况。
+                    流感主要通过飞沫传播，当一个感染流感病毒的人咳嗽、打喷嚏或说话时，就会释放出含有病毒的飞沫，其他人吸入这些病毒后就可能感染上流感。
                   </p>
                 </div>
               </li>
 
               <li class="about-item">
                 <figure class="item-img img-holder" style="--width: 80; --height: 80;">
-                  <img src="../../assets/imagesabout-1-2.jpg" width="80" height="80" loading="lazy" alt="Air Transmission">
+                  <img src="../../assets/images/about-1-2.jpg" width="80" height="80" loading="lazy" alt="Air Transmission">
                 </figure>
 
                 <div class="item-content">
                   <h3 class="h4 item-title">易感人群</h3>
 
                   <p class="item-text text">
-                  各个年龄段的人都可能被感染，被感染的主要是成年人，其中老年人和体弱多病的人似乎更容易被感染。
-儿童和孕产妇是新型冠状病毒感染的肺炎的易感染人群。
+                    流感病毒可以感染任何年龄的人，但是以下人群更容易感染流感或出现严重症状：
+                    <br> &nbsp;&nbsp;&nbsp;&nbsp;1.年龄在65岁及以上的老年人有慢性疾病（如哮喘、糖尿病、心脏病、肺部疾病等）的人；
+                    <br> &nbsp;&nbsp;&nbsp;&nbsp;2.免疫系统较弱的人，如接受化疗、器官移植、患有免疫缺陷病等的人.
+                    <br> &nbsp;&nbsp;&nbsp;&nbsp;3.妊娠期妇女.
+                    <br> &nbsp;&nbsp;&nbsp;&nbsp;4.婴儿和幼儿
                   </p>
                 </div>
               </li>
 
               <li class="about-item">
                 <figure class="item-img img-holder" style="--width: 80; --height: 80;">
-                  <img src="../../assets/imagesabout-1-3.jpg" width="80" height="80" loading="lazy"
+                  <img src="../../assets/images/about-1-3.jpg" width="80" height="80" loading="lazy"
                     alt="Contaminated Objects">
                 </figure>
 
@@ -183,7 +186,9 @@ aria-label="home">
                   <h3 class="h4 item-title">主要症状</h3>
 
                   <p class="item-text text">
-                    病毒感染者会出现程度不同的症状，有的只是发烧或轻微咳嗽，有的会发展为肺炎，有的则更为严重甚至死亡。新冠肺炎的症状主要是干咳、发烧、乏力为主。</p>
+                    流感的症状包括发热、咳嗽、喉咙痛、流鼻涕、肌肉疼痛、头痛、疲劳等。大多数人会在7-10天内恢复健康，
+                    但是在一些情况下，流感可能导致严重并发症，如肺炎、心肌炎、中耳炎等，尤其是对于老年人、婴儿和免疫系统较弱的人群，
+                    更容易发生严重并发症。</p>
                 </div>
               </li>
 
@@ -295,9 +300,7 @@ aria-label="home">
           <h2 class="h2 section-title" id="blog-label">Our Most Popular Blog</h2>
 
           <p class="section-text text">
-            Dynamically formulate fully tested catalysts for change via focused methods of empowerment Assertively
-            extend
-            alternative synergy and extensive web services.
+            通过有重点的赋权方法，动态地制定经过充分测试的具有强大扩展性的协同网络服务。
           </p>
 
           <ul class="grid-list">
@@ -314,7 +317,7 @@ aria-label="home">
 
                   <h3 class="h4">
                     <a href="#" class="card-title">
-                      Conulting Reporting Qouncil Arei Not Could More...
+                      通过咨询获得更多帮助
                     </a>
                   </h3>
 
@@ -335,14 +338,14 @@ aria-label="home">
                   </div>
 
                   <p class="card-text text">
-                    Pluoresntly customize pranci an plcentered customer service anding strategic amerials Interacvely
-                    cordinate performe
+                    为客户提供个性化的关注和定制的解决方案，
+                    以满足他们的具体需求和要求。
                   </p>
 
                 </div>
 
                 <div class="card-footer">
-                  <a href="#" class="btn-link">Read More</a>
+                  <a href="#" class="btn-link">更多...</a>
                 </div>
 
               </div>
@@ -360,7 +363,7 @@ aria-label="home">
 
                   <h3 class="h4">
                     <a href="#" class="card-title">
-                      Financial Reporting Qouncil What Could More...
+                      通过咨询获得更多帮助
                     </a>
                   </h3>
 
@@ -381,14 +384,13 @@ aria-label="home">
                   </div>
 
                   <p class="card-text text">
-                    Pluoresntly customize pranci an plcentered customer service anding strategic amerials Interacvely
-                    cordinate performe
+                    致力于提供个性化的服务，以满足我们每个客户的独特需求和偏好。
                   </p>
 
                 </div>
 
                 <div class="card-footer">
-                  <a href="#" class="btn-link">Read More</a>
+                  <a href="#" class="btn-link">更多...</a>
                 </div>
 
               </div>
@@ -406,7 +408,7 @@ aria-label="home">
 
                   <h3 class="h4">
                     <a href="#" class="card-title">
-                      Consulting Reporting Qounc Arei Could More...
+                      通过咨询获得更多帮助
                     </a>
                   </h3>
 
@@ -427,14 +429,14 @@ aria-label="home">
                   </div>
 
                   <p class="card-text text">
-                    Pluoresntly customize pranci an plcentered customer service anding strategic amerials Interacvely
-                    cordinate performe
+                    为客户量身定做的服务，我们还将继续努力，
+                    使我们的产品和服务更上一层楼。
                   </p>
 
                 </div>
 
                 <div class="card-footer">
-                  <a href="#" class="btn-link">Read More</a>
+                  <a href="#" class="btn-link">更多...</a>
                 </div>
 
               </div>
@@ -530,24 +532,25 @@ const logoutText = computed(() => {
 const drawChart = (container: HTMLElement) => {
   const chart = echarts.init(container);
    // 模拟数据
-   const fluData = [1000, 1200, 1500, 1800, 2000, 2300, 2800, 3500, 4200, 5000, 6000, 8000];
-      const covidData = [9000, 50, 200, 1000, 3000, 8000, 15000, 18000, 20000, 18000, 15000, 12000];
+   const AData = [2892, 3210, 2689, 3145, 2693, 1890, 1801, 2299, 3510, 4501, 5421, 4999];
+   const BData = [382, 429, 503, 666, 704, 912, 1024, 1555, 2445, 2167, 3135, 2984];
+   const CData = [150, 235, 310, 429, 642, 749, 1121, 1464, 1981, 1778, 2399, 2099];
+
   const option = {
     title: {
-      text: '每月流感和新冠病例数',
+      text: 'monthly flu cases',
       left: 'center',
     },
     tooltip: {
       trigger: 'axis',
     },
     legend: {
-          data: ['流感', '新冠'],
+          data: ['A型流感','B型流感','C型流感'],
           top: 'bottom',
         },
         xAxis: {
           type: 'category',
           data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
-         
             
         },
         yAxis: {
@@ -560,16 +563,22 @@ const drawChart = (container: HTMLElement) => {
         },
         series: [
           {
-            name: '流感',
+            name: 'A型流感',
             type: 'line',
-            data: fluData,
+            data: AData,
             color: 'blue',
           },
           {
-            name: '新冠',
+            name: 'B型流感',
             type: 'line',
-            data: covidData,
+            data: BData,
             color: 'red',
+          },
+          {
+            name: 'C型流感',
+            type: 'line',
+            data: CData,
+            color: 'yellow',
           },
         ],
       };
@@ -1462,7 +1471,7 @@ transform: translateY(-10px);
 
 .navbar-list {
   display: flex;
-  gap: 40px;
+  gap: 37px;
 }
 
 .navbar-item:not(:last-child) { border: none; }
