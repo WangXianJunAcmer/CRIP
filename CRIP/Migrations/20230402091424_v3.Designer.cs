@@ -4,6 +4,7 @@ using CRIP.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRIP.Migrations
 {
     [DbContext(typeof(CRIPDbContext))]
-    partial class CRIPDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230402091424_v3")]
+    partial class v3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,10 +32,6 @@ namespace CRIP.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -95,14 +94,13 @@ namespace CRIP.Migrations
                         {
                             Id = "90184155-dee0-40c9-bb1e-b5ed07afc04e",
                             AccessFailedCount = 0,
-                            Address = "科大",
-                            ConcurrencyStamp = "63b8d5df-218b-4f5d-b42a-2777fde9189e",
+                            ConcurrencyStamp = "48e149ee-a8bc-4bac-9d78-e4bdd2aba716",
                             Email = "CRIPAdmin@qq.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEHjU5Ertb9l09knRfFFcmjoBIIfAfI+lhZyOU6LsGaHYcgaf75U2JA0gKdB4TFCmGA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMvVHS94I7FToSQenFoY4iV5Q73LRRrX//l7BzZgi9krin9K2HKtAl/4kV3rVCJDGg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c842726a-28ae-438e-9ac0-9f57118ebc5e",
+                            SecurityStamp = "75e87653-6a7b-49ee-a321-a5dd41ce2014",
                             TwoFactorEnabled = false,
                             UserName = "Admin@qq.com"
                         });
@@ -252,21 +250,14 @@ namespace CRIP.Migrations
                         new
                         {
                             Id = "308660dc-ae51-480f-824d-7dca6714c3e2",
-                            ConcurrencyStamp = "22192652-6401-42dd-861d-1a8df47ff451",
+                            ConcurrencyStamp = "ca0d277d-f203-40d8-baee-600b77917e9a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "123420dc-ae51-480f-824d-7dca6714c3e2",
-                            ConcurrencyStamp = "9e69ecec-1520-45a1-abc2-bb53d63746fa",
-                            Name = "Doctor",
-                            NormalizedName = "DOCTOR"
-                        },
-                        new
-                        {
                             Id = "ce82c36a-ca40-8e0a-3b89-53dc06850c3c",
-                            ConcurrencyStamp = "b0e70354-d99c-48da-9bb4-39e9d587d0ad",
+                            ConcurrencyStamp = "8e7eab60-2111-452f-a5be-a27375c90314",
                             Name = "OrdinaryUser",
                             NormalizedName = "ORDINARYUSER"
                         });

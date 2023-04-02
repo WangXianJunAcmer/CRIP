@@ -8,7 +8,6 @@ import {
 } from '@element-plus/icons-vue'
 import { cartStore, useTestStore } from '../../store';
 import { cartitem } from '../../api/types/type';
-import { pl } from 'element-plus/es/locale';
 import router from '../../router';
 
 

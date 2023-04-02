@@ -18,5 +18,6 @@
         /// 链接
         /// </summary>
         public LinkDto Link { get; set; }
+
     }
 }

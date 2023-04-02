@@ -212,7 +212,8 @@ const rules = reactive(
             {
                 //必填项
 
-                required: true,
+               // required: true,
+               required: false,
                 //提示语
                 message: '请输入验证码',
                 //触发条件的方式

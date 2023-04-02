@@ -8,6 +8,7 @@ namespace CRIP.Models
     public class CRIPUser:IdentityUser
     {
    
+        public string  Address { get; set; }
         //角色
         public virtual ICollection<IdentityUserRole<string>>  UserRoles { get; set; }
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }

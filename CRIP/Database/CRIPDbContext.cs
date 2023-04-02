@@ -5,10 +5,10 @@ using CRIP.Models;
 
 namespace CRIP.Database
 {
-    public class CRIPDbContext:IdentityDbContext<CRIPUser>
+    public class CRIPDbContext : IdentityDbContext<CRIPUser>
     {
         public CRIPDbContext(DbContextOptions<CRIPDbContext> options) : base(options)
-        { 
+        {
 
         }
         /// <summary>
@@ -21,7 +21,7 @@ namespace CRIP.Database
         public DbSet<Order> Orders { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            
+
             #region 添加管理员
             //更新了原先User的外键变为CRIPUser的外键,绑定CRIPUser外键
             builder.Entity<CRIPUser>
@@ -32,6 +32,7 @@ namespace CRIP.Database
            );
             //添加管理员角色
             var adminGuid = "308660dc-ae51-480f-824d-7dca6714c3e2";
+            var doctorGuid = "123420dc-ae51-480f-824d-7dca6714c3e2";
             builder.Entity<IdentityRole>().HasData
             (
                 new IdentityRole()
@@ -39,7 +40,13 @@ namespace CRIP.Database
                     Id = adminGuid,
                     Name = "Admin",
                     NormalizedName = "Admin".ToUpper()
-                }
+                },
+                 new IdentityRole()
+                 {
+                  Id = doctorGuid,
+                  Name = "Doctor",
+                  NormalizedName = "Doctor".ToUpper()
+                  }
             );
 
 
@@ -50,8 +57,9 @@ namespace CRIP.Database
             CRIPUser adminUser = new CRIPUser()
             {
                 Id = adminUserId,
-                UserName = "Admin@qq.com",         
-                Email = "CRIPAdmin@qq.com",   
+                UserName = "Admin@qq.com",
+                Email = "CRIPAdmin@qq.com",
+                Address="科大"
             };
             //Hash密码
             adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, "123456");

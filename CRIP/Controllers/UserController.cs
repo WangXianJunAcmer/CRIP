@@ -16,6 +16,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Net.Http.Headers;
 using AutoMapper;
 using CRIP.Dtos;
+using CRIP.Dtos.GoodsDtos;
+using CRIP.Services.Repositorys;
+using Microsoft.Extensions.Primitives;
+using System.Collections.Generic;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace CRIP.Controllers
@@ -235,13 +239,15 @@ namespace CRIP.Controllers
                 return Ok(pagesResponse);
             }
             #endregion
+
             #region 创建用户
             //新建用户
             CRIPUser user = new()
             {
                 Id = Guid.NewGuid().ToString(),
                 UserName = registerParameter.UserName,
-                Email = registerParameter.Email
+                Email = registerParameter.Email,
+                Address = registerParameter.Address
             };
 
             Cart cart = new Cart()
@@ -252,14 +258,19 @@ namespace CRIP.Controllers
             await _cartRepository.AddEntityAsync(cart);
             //将用户插入到表里，并Hash密码
             var Res = await _userManager.CreateAsync(user, registerParameter.Password);
-
-            //给用户添加普通角色
-            IdentityUserRole<string> identityUserRole = new()
+            IdentityUserRole<string> identityUserRole = new();
+            if (registerParameter.Role == "Docter")
             {
-                UserId = user.Id,
-                RoleId = _configuration["Roles:ordinaryUserGuid"]
-            };
+                identityUserRole.UserId = user.Id;
+                identityUserRole.RoleId = _configuration["Roles:doctorGuid"];
 
+            }
+            else if (registerParameter.Role == "ordinaryUser" || registerParameter.Role == "")
+            {
+                identityUserRole.UserId = user.Id;
+                identityUserRole.RoleId = _configuration["Roles:ordinaryUserGuid"];
+
+            }
             await _userRepository.AddRoleToUserAsync(identityUserRole); //绑定用户角色
             if (!Res.Succeeded)
             {
@@ -495,7 +506,6 @@ namespace CRIP.Controllers
                 : parsedMediatype.SubTypeWithoutSuffix;
             object usersDto;
             #endregion
-            Console.WriteLine(primaryMediaType);
             if (primaryMediaType == "vnd.CRIP.User.simplify")
             {
                 usersDto = _mapper.Map<UserSimplifyDto>(user);
@@ -525,6 +535,52 @@ namespace CRIP.Controllers
             }
             return Ok(pagesResponse);
 
+        }
+        #endregion
+
+        #region 获取分页与Hateoas   
+        /// <summary>
+        /// 获得Users
+        /// </summary>
+        /// <param name="getUserMessageParameterParameter"></param>
+        /// <param name="paginationResourceParamaters"></param>
+        /// <returns></returns>
+        [HttpGet("Users")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> GetUsers(
+            [FromQuery] GetUserMessageParameter getUserMessageParameterParameter,
+            [FromQuery] PaginationResourceParamaters paginationResourceParamaters
+
+            )
+        {
+            PagesResponse pagesResponse = new PagesResponse();
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+
+            //从仓库获得分页资源
+            var userRepo = await _userRepository
+            .GetAllUserAsync(
+                getUserMessageParameterParameter.Keyword,
+                getUserMessageParameterParameter.FindByString,
+                userId,
+                getUserMessageParameterParameter.OrderBy,
+                getUserMessageParameterParameter.Desc,
+                paginationResourceParamaters.PageNumber,
+                paginationResourceParamaters.PageSize
+                );
+          
+            if (userRepo == null || userRepo.Count() == 0)
+            {
+                pagesResponse.NotFound("未找到用户");
+                return NotFound(pagesResponse);
+            }
+            else
+            {  var userDto = _mapper.Map< IEnumerable < UserDto >>(userRepo);
+                pagesResponse.Success(userDto);
+                return Ok(pagesResponse);
+            }
+ 
+       
         }
         #endregion
     }

@@ -102,6 +102,14 @@
             <param name="mediaType"></param>
             <returns></returns>
         </member>
+        <member name="M:CRIP.Controllers.UserController.GetUsers(CRIP.ResourceParameters.GetUserMessageParameter,CRIP.ResourceParameters.PaginationResourceParamaters)">
+            <summary>
+            获得Users
+            </summary>
+            <param name="getUserMessageParameterParameter"></param>
+            <param name="paginationResourceParamaters"></param>
+            <returns></returns>
+        </member>
         <member name="T:CRIP.Models.CRIPUser">
             <summary>
             User
@@ -125,6 +133,11 @@
         <member name="P:CRIP.Models.Goods.Quantity">
             <summary>
             库存数量
+            </summary>
+        </member>
+        <member name="P:CRIP.Models.Goods.Url">
+            <summary>
+            图片的url
             </summary>
         </member>
         <member name="T:CRIP.Models.OrderStateEnum">
@@ -172,6 +185,11 @@
             库存数量
             </summary>
         </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsCreateDto.Url">
+            <summary>
+            图片url
+            </summary>
+        </member>
         <member name="P:CRIP.Dtos.GoodsDtos.GoodsDto.Id">
             <summary>
             ID
@@ -195,6 +213,11 @@
         <member name="P:CRIP.Dtos.GoodsDtos.GoodsDto.Quantity">
             <summary>
             库存数量
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsDto.Url">
+            <summary>
+            图片url
             </summary>
         </member>
         <member name="P:CRIP.Dtos.GoodsDtos.GoodsDto.Link">
@@ -240,6 +263,11 @@
         <member name="P:CRIP.Dtos.GoodsDtos.GoodsUpdateDto.Quantity">
             <summary>
             库存数量
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsUpdateDto.Url">
+            <summary>
+            图片url
             </summary>
         </member>
         <member name="M:CRIP.Helper.EmailHelper.SendEmail">
@@ -304,6 +332,30 @@
         <member name="M:CRIP.Migrations.v2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:CRIP.Migrations.v3">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v3.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v3.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v3.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:CRIP.Migrations.v4">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v4.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v4.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v4.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
         <member name="M:CRIP.Services.IRepositorys.IUserRepository.AddRoleToUserAsync(Microsoft.AspNetCore.Identity.IdentityUserRole{System.String})">
             <summary>
             添加role给user
@@ -314,6 +366,17 @@
         <member name="M:CRIP.Services.Repositorys.GoodsRepository.GetAllGoodsAsync(System.String,System.String,System.Nullable{System.Boolean},System.Int32,System.Int32)">
             <summary>
             分页获得多个goods
+            </summary>
+            <param name="keyword">模糊查找键值</param>
+            <param name="orderby">安装什么排序，默认name，可选number，place</param>
+            <param name="desc">是否倒叙，默认否</param>
+            <param name="pageNumber">页数</param>
+            <param name="pageSize">页面内容数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Services.Repositorys.UserRepository.GetAllUserAsync(System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Int32,System.Int32)">
+            <summary>
+            分页获得多个User
             </summary>
             <param name="keyword">模糊查找键值</param>
             <param name="orderby">安装什么排序，默认name，可选number，place</param>
