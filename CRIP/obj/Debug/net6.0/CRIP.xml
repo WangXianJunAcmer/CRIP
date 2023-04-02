@@ -1,0 +1,389 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CRIP</name>
+    </assembly>
+    <members>
+        <member name="M:CRIP.Controllers.CartController.CheckouteCart">
+            <summary>
+            全部下单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Controllers.CartController.BatchCheckouteCart(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            批量下单
+            </summary>
+            <param name="ItemIDs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Controllers.GoodsController.GetGoodByIdAsync(System.String)">
+            <summary>
+            通过Id获得商品
+            </summary>
+            <param name="goodId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Controllers.GoodsController.GetGoodsAsync(CRIP.ResourceParameters.GoodsParameter,CRIP.ResourceParameters.PaginationResourceParamaters,System.String)">
+            <summary>
+            获取分页与Hateoas 的goods数据
+            </summary>
+            <param name="goodsParameter">keyword 模糊查找关键字，orderBy 根据什么排序，desc是否逆序 </param>
+            <param name="paginationResourceParamaters">当前第几页，当前页数据量</param>
+            <param name="mediaType">请求方式</param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Controllers.GoodsController.CreateGoodAsync(CRIP.Dtos.GoodsDtos.GoodsCreateDto)">
+            <summary>
+            创建商品
+            </summary>
+            <param name="goodsCreateDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Controllers.GoodsController.PartiallyUpdataGoods(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{CRIP.Dtos.GoodsDtos.GoodsUpdateDto})">
+            <summary>
+            修改商品
+            </summary>
+            <param name="goodsId"></param>
+            <param name="jsonPatchDocument"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Controllers.GoodsController.DeleteGoodsById(System.String)">
+            <summary>
+            删除商品
+            </summary>
+            <param name="goodsId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CRIP.Controllers.UserController">
+            <summary>
+            用户控制器
+            </summary>
+        </member>
+        <member name="M:CRIP.Controllers.UserController.LoginAsync(CRIP.ResourceParameters.LoginParameter)">
+            <summary>
+            登录
+            </summary>
+            <param name="loginParameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Controllers.UserController.RegisterAsync(CRIP.ResourceParameters.RegisterParameter)">
+            <summary>
+            注册
+            </summary>
+            <param name="registerParameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Controllers.UserController.ChangePasswordAsync(CRIP.ResourceParameters.ChangePasswordParameter)">
+            <summary>
+            重置密码
+            </summary>
+            <param name="forgetPasswordParameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Controllers.UserController.SendEmailToRegister(System.String)">
+            <summary>
+            发送注册邮件
+            </summary>
+            <param name="Email">邮箱</param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Controllers.UserController.SendEmailToChangePassword(System.String)">
+            <summary>
+            发送重置密码邮件
+            </summary>
+            <param name="Email">邮箱</param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Controllers.UserController.GetUserMessage(System.String)">
+            <summary>
+            获得用户信息
+            </summary>
+            <param name="mediaType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Controllers.UserController.GetUsers(CRIP.ResourceParameters.GetUserMessageParameter,CRIP.ResourceParameters.PaginationResourceParamaters)">
+            <summary>
+            获得Users
+            </summary>
+            <param name="getUserMessageParameterParameter"></param>
+            <param name="paginationResourceParamaters"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CRIP.Models.CRIPUser">
+            <summary>
+            User
+            </summary>
+        </member>
+        <member name="P:CRIP.Models.Goods.Name">
+            <summary>
+            商品名 
+            </summary>
+        </member>
+        <member name="P:CRIP.Models.Goods.Price">
+            <summary>
+            价格
+            </summary>
+        </member>
+        <member name="P:CRIP.Models.Goods.Info">
+            <summary>
+            商品信息
+            </summary>
+        </member>
+        <member name="P:CRIP.Models.Goods.Quantity">
+            <summary>
+            库存数量
+            </summary>
+        </member>
+        <member name="P:CRIP.Models.Goods.Url">
+            <summary>
+            图片的url
+            </summary>
+        </member>
+        <member name="T:CRIP.Models.OrderStateEnum">
+            <summary>
+            订单状态枚举类型
+            </summary>
+        </member>
+        <member name="T:CRIP.Models.OrderStateTriggerEnum">
+            <summary>
+            订单动作枚举
+            </summary>
+        </member>
+        <member name="M:CRIP.Models.Order.PaymentProcessing">
+            <summary>
+            订单处理中
+            </summary>
+        </member>
+        <member name="M:CRIP.Models.Order.PaymentApprove">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:CRIP.Database.CRIPDbContext.CRIPUsers">
+            <summary>
+            用户
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsCreateDto.Name">
+            <summary>
+            商品名 
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsCreateDto.Price">
+            <summary>
+            价格
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsCreateDto.Info">
+            <summary>
+            商品信息
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsCreateDto.Quantity">
+            <summary>
+            库存数量
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsCreateDto.Url">
+            <summary>
+            图片url
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsDto.Id">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsDto.Name">
+            <summary>
+            商品名 
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsDto.Price">
+            <summary>
+            价格
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsDto.Info">
+            <summary>
+            商品信息
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsDto.Quantity">
+            <summary>
+            库存数量
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsDto.Url">
+            <summary>
+            图片url
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsDto.Link">
+            <summary>
+            链接
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsSimplifyDto.Id">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsSimplifyDto.Name">
+            <summary>
+            商品名 
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsSimplifyDto.Price">
+            <summary>
+            价格
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsSimplifyDto.Link">
+            <summary>
+            链接
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsUpdateDto.Name">
+            <summary>
+            商品名 
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsUpdateDto.Price">
+            <summary>
+            价格
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsUpdateDto.Info">
+            <summary>
+            商品信息
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsUpdateDto.Quantity">
+            <summary>
+            库存数量
+            </summary>
+        </member>
+        <member name="P:CRIP.Dtos.GoodsDtos.GoodsUpdateDto.Url">
+            <summary>
+            图片url
+            </summary>
+        </member>
+        <member name="M:CRIP.Helper.EmailHelper.SendEmail">
+            <summary>
+            发送的信息，发送的默认地址，如果传参了话就被覆盖
+            </summary>
+            <param name="msg">发送的信息</param>
+            <param name="address">发送的地址</param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Helper.RedisHelper.GetConnect">
+            <summary>
+            获取ConnectionMultiplexer
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Helper.RedisHelper.GetDatabase">
+            <summary>
+            获取数据库
+            </summary>
+            <param name="configName"></param>
+            <param name="db">默认为0：优先代码的db配置，其次config中的配置</param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Helper.RSAHelper.RSAEncryption(System.String,System.String)">
+            <summary> 
+            RSA加密数据 
+            </summary> 
+            <param name="express">要加密数据</param> 
+            <param name="KeyContainerName">密匙容器的名称</param> 
+            <returns></returns> 
+        </member>
+        <member name="M:CRIP.Helper.RSAHelper.RSADecrypt(System.String,System.String)">
+            <summary> 
+            RSA解密数据 
+            </summary> 
+            <param name="ciphertext">要解密数据</param> 
+            <param name="KeyContainerName">密匙容器的名称</param> 
+            <returns></returns> 
+        </member>
+        <member name="T:CRIP.Migrations.v1">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v1.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v1.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v1.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:CRIP.Migrations.v2">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:CRIP.Migrations.v3">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v3.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v3.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v3.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:CRIP.Migrations.v4">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v4.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v4.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Migrations.v4.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CRIP.Services.IRepositorys.IUserRepository.AddRoleToUserAsync(Microsoft.AspNetCore.Identity.IdentityUserRole{System.String})">
+            <summary>
+            添加role给user
+            </summary>
+            <param name="identityUserRole"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Services.Repositorys.GoodsRepository.GetAllGoodsAsync(System.String,System.String,System.Nullable{System.Boolean},System.Int32,System.Int32)">
+            <summary>
+            分页获得多个goods
+            </summary>
+            <param name="keyword">模糊查找键值</param>
+            <param name="orderby">安装什么排序，默认name，可选number，place</param>
+            <param name="desc">是否倒叙，默认否</param>
+            <param name="pageNumber">页数</param>
+            <param name="pageSize">页面内容数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Services.Repositorys.UserRepository.GetAllUserAsync(System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Int32,System.Int32)">
+            <summary>
+            分页获得多个User
+            </summary>
+            <param name="keyword">模糊查找键值</param>
+            <param name="orderby">安装什么排序，默认name，可选number，place</param>
+            <param name="desc">是否倒叙，默认否</param>
+            <param name="pageNumber">页数</param>
+            <param name="pageSize">页面内容数量</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

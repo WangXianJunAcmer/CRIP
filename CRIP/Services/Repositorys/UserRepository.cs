@@ -55,7 +55,7 @@ namespace CRIP.Services.Repositorys
                 else if(FindString== "doctor")//判断用户角色是不是doctor，且地址包含keyword
                 {
                     result = result.Where(u =>
-                    (u.UserRoles.Where(r=>r.UserId == userId).FirstOrDefault().RoleId.Equals(_configuration["Roles:doctorGuid"]))
+                    _CRIPDbContext.UserRoles.FirstOrDefault(r =>r.UserId == userId).RoleId.Equals(_configuration["Roles:doctorGuid"])
                     &&u.Address.Contains(keyword));
 
                 }

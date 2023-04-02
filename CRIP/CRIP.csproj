@@ -5,7 +5,6 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>D:\code\Csharp\CRIP\CRIP\CRIP.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
