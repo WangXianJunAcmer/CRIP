@@ -28,7 +28,7 @@
             <a href="#measures" class="navbar-link" data-nav-link>预约挂号</a>
           </li>
           <li class="navbar-item">
-            <a href="#doctor" class="navbar-link" data-nav-link>在线就医</a>
+            <a href="/consult" class="navbar-link" data-nav-link>在线就医</a>
           </li>
 
           <li class="navbar-item">
@@ -747,6 +747,9 @@ const  loginpath=computed(
 --transition-1: 0.25s ease;
 --transition-2: 0.5s ease;
 --cubic-out: cubic-bezier(0.33, 0.85, 0.4, 0.96);
+
+
+
 
 }
 

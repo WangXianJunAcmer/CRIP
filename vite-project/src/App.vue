@@ -26,7 +26,7 @@ body {
       元素高度设置为视窗的高度，确保整个页面铺满浏览器。
       */
    
-    background-color:#576495;
+    background-color:#33507b;
 
 font-size: 1.6rem;
 line-height: 1.5;
