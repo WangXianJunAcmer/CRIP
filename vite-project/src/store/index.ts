@@ -52,6 +52,7 @@ export const cartStore = defineStore(Names.Cart,
 
     state: () => ({
       cart: [] as CartItem[],
+     
     }),
     actions: {
       //获得全部购物车内容
@@ -124,7 +125,7 @@ export const cartStore = defineStore(Names.Cart,
         // 遍历需要删除的id数组，从购物车中找到对应的商品并删除
         console.log(ids);
 
-
+         
         // 向后端发送请求，更新购物车
         await batchCheckout(ids).then(response => {
 
@@ -158,3 +159,4 @@ export const cartStore = defineStore(Names.Cart,
       },
     },
   })
+

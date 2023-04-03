@@ -1,4 +1,5 @@
 <script setup lang='ts'>
+import { computed, ref } from 'vue';
 import { Addtocart } from '../../api/shop';
 import { cartitem, Drugs } from '../../api/types/type';
 import { cartStore } from '../../store';
@@ -41,6 +42,9 @@ const addToCart=(id:string)=>{
  
 
 }
+
+
+
 </script>
 
 
@@ -57,7 +61,7 @@ const addToCart=(id:string)=>{
       <div class="card-banner">
 
         <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-          <img src="../../assets/images/product-4.png" width="448" height="470" loading="lazy"
+          <img src="getImageUrl(tu.image)" width="448" height="470" loading="lazy"
             alt="Acne Baseball Cap" class="img-cover">
         </figure>
       

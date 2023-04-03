@@ -3,7 +3,7 @@
     <div class="login-page">
 
 
-      <el-form :model="form"
+      <el-form :rules="rules" :model="form"
       ref="ruleFormRef"    
    >
         <h1> 登陆</h1>
@@ -38,8 +38,7 @@
                     ></el-input>
       </el-form-item>
 
-       
-     
+    
       </el-form>
       <div class="bt">
         <button @click="submitForm(ruleFormRef)">
@@ -71,46 +70,26 @@ const router = useRouter()
 const form = ref(
   {
     email: '',
-    password: ''
+    password: '',
+
   }
 )
 
 const rules = ref(
     {
-        email: [
-            {
-
-                //必填项
-                required: true,
-                //提示语
-                message: '请输入你的邮箱',
-                //触发条件的方式
-                trigger: 'blur'
-            },
-            {
-                type: "email",
-                //必填项
-
-                //提示语
-                message: '邮箱格式不正确',
-                //触发条件的方式
-                trigger: 'blur'
-            }
-        ],
-        password: [
-            {
-                //必填项
-                required: true,
-                //提示语
-                message: '请输入你的密码,密码必须包含大小写数字',
-                //触发条件的方式
-                trigger: 'blur'
-            }
-
-        ]
+       
+        region: [
+    {
+      required: true,
+      message: '选择城市',
+      trigger: 'change',
+    },
+  ],
 
     }
 )
+
+
 const ruleFormRef = ref<FormInstance>()
 
 

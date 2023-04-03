@@ -2,7 +2,7 @@
 import requestCart from "../utils/cart";
 import { useTestStore } from '../store';
 import { cartitem } from "./types/type";
-
+import {OrderItem} from "./types/type";
 // 加入到购物车
 
 export const Addtocart =(id:string)=>{
@@ -116,4 +116,24 @@ export const checkoutAll = () => {
     });
   };
 
- 
+ // get到购物车
+
+
+export const Getfromorder =()=>{
+    
+  const getthename=useTestStore();
+    return requestCart
+    (
+   
+       
+
+    {
+        method:'get',
+        url:'/api/Order/Orders',
+        headers:{
+            Authorization: `Bearer ${getthename.token}`,
+            accept: '*/*'
+        },
+        
+    })
+}

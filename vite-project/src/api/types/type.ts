@@ -37,3 +37,13 @@ export interface Header{
     price:number
  
   }
+
+ export interface OrderItem{
+    userId:string
+      user: string,
+      orderLineItems: string,
+      state: number,
+      createDateUTC: string
+      id: string
+  }
+  
