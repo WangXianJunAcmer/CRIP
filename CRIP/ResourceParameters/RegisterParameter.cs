@@ -17,6 +17,10 @@ namespace CRIP.ResourceParameters
         [Required]
         [Compare(nameof(Password), ErrorMessage = "确认密码与密码不相同")]
         public string ConfirmPassword { get; set; }
+        [Required(ErrorMessage = "身份不能为空")]
+        public string Role { get; set; }   
+        [Required(ErrorMessage = "地址不能为空")]
+        public string Address { get; set; }   
         [Required(ErrorMessage = "验证码不能为空")]
         public string Code { get; set; }   //验证码
     }

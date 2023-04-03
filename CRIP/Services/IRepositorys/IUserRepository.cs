@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Identity;
 using CRIP.Models;
+using CRIP.Common;
 
 namespace CRIP.Services.IRepositorys
 {
@@ -12,8 +13,8 @@ namespace CRIP.Services.IRepositorys
     /// <param name="identityUserRole"></param>
     /// <returns></returns>
         Task AddRoleToUserAsync(IdentityUserRole<string> identityUserRole);
- 
-        
-   
+
+        Task<PageList<CRIPUser>> GetAllUserAsync(string? keyword, string? FindString, string? userId, string? orderby, bool? desc, int pageNumber, int pageSize);
+
     }
 }

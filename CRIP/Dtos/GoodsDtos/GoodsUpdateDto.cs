@@ -18,5 +18,9 @@
         /// 库存数量
         /// </summary>
         public int Quantity { get; set; }
+        /// <summary>
+        /// 图片url
+        /// </summary>
+        public string Url { get; set; }
     }
 }

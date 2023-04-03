@@ -21,10 +21,15 @@
         /// <summary>
         /// 库存数量
         /// </summary>
-        public int Quantity { get; set; }
+        public int Quantity { get; set; }      
+        /// <summary>
+        /// 图片url
+        /// </summary>
+        public string Url { get; set; }
         /// <summary>
         /// 链接
         /// </summary>
         public LinkDto Link { get; set; }
+ 
     }
 }

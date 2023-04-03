@@ -5,8 +5,7 @@
           :model="form"
           style="width: 90%"
           ref="ruleFormRef"
-          :rules="rules"
-        >
+          :rules="rules"         >
           <h1>注册</h1>
   
           <el-form-item
@@ -212,98 +211,99 @@
   const SendEmailToRegister = async (formEl: FormInstance | undefined) => {
     if (!formEl) return;
     await formEl.validate((valid, fields) => {
-      if (valid) {
-        console.log("发送验证码");
-        const Registerdata = postToRegister(form.value);
-        console.log(Registerdata);
-  
-        message.display = true; //起初
-        message.isDisabled = true;
-  
-        let interval = window.setInterval(function () {
-          message.tips = "" + message.number + "秒后重新发送";
-          --message.number;
-          if (message.number < 0) {
-            message.tips = "重新发送";
-            message.number = 60;
-            message.isDisabled = false;
-            window.clearInterval(interval);
-          }
-        }, 1000);
-      } else {
-        console.log("error submit!", fields);
-      }
-    });
-  };
-  
-  // 定义校验规则 ref里面放着一个对象，一个key值，key值对应的数组
-  const rules = reactive({
-    password: [
-      {
-        //必填项
-        required: true,
-        //提示语
-        message: "请输入你的密码",
-        //触发条件的方式
-        trigger: "blur",
-      },
-      {
-        validator: validatePass,
-        min: 8,
-        max: 30,
-  
-        message: "密码必须包含8-30位以上的大小写及数字",
-        trigger: "blur",
-      },
-    ],
-    confirmPassword: [
-      {
-        //必填项
-        required: true,
-        //提示语
-        message: "请输入相同密码",
-        //触发条件的方式
-        trigger: "blur",
-      },
-      {
-        validator: validatePass2,
-  
-        trigger: "blur",
-      },
-    ],
-    region: [
-      {
-        //必填项
-        required: true,
-        //提示语
-        message: "请选择您的所在地",
-        //触发条件的方式
-        trigger: "blur",
-      },
-    ],
-    resource: [
-      {
-        required: true,
-        message: "请选择您的身份",
-        trigger: "change",
-      },
-    ],
-    code: [
-      {
-        //必填项
-  
-        required: true,
-        //提示语
-        message: "请输入验证码",
-        //触发条件的方式
-        trigger: "blur",
-      },
-    ],
-  });
-  
-  //验证码里的对象属性
-  const message = reactive({
-    tips: "获取验证码",
+        if (valid) {
+            console.log("发送验证码")
+            const Registerdata = postToRegister(form.value)
+            console.log(Registerdata)
+
+            message.display = true; //起初
+            message.isDisabled = true;
+
+            let interval = window.setInterval(function () {
+
+                message.tips = "" + message.number + "秒后重新发送";
+                --message.number;
+                if (message.number < 0) {
+                    message.tips = "重新发送";
+                    message.number = 60;
+                    message.isDisabled = false;
+                    window.clearInterval(interval);
+
+                }
+            }, 1000);
+
+        }
+        else {
+            console.log('error submit!', fields)
+        }
+
+
+
+    })
+
+
+
+}
+
+// 定义校验规则 ref里面放着一个对象，一个key值，key值对应的数组
+const rules = reactive(
+    {
+
+        password: [
+            {
+                //必填项
+                required: true,
+                //提示语
+                message: '请输入你的密码',
+                //触发条件的方式
+                trigger: 'blur'
+            },
+            {
+
+                validator: validatePass,
+                min: 8,
+                max: 30,
+
+                message: "密码必须包含8-30位以上的大小写及数字",
+                trigger: 'blur'
+            }
+        ],
+        confirmPassword: [
+            {
+
+                //必填项
+                required: true,
+                //提示语
+                message: '请输入相同密码',
+                //触发条件的方式
+                trigger: 'blur'
+            },
+            {
+                validator: validatePass2,
+
+                trigger: 'blur'
+
+            }
+        ],
+        code: [
+            {
+                //必填项
+
+               // required: true,
+               required: false,
+                //提示语
+                message: '请输入验证码',
+                //触发条件的方式
+                trigger: 'blur',
+
+            }
+        ]
+    }
+)
+
+//验证码里的对象属性
+const message = reactive({
+    tips: '获取验证码',
     number: 60,
     display: false,
     isDisabled: false,
