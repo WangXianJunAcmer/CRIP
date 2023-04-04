@@ -61,24 +61,25 @@ const addToCart=(id:string)=>{
       <div class="card-banner">
 
         <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-          <img src="getImageUrl(tu.image)" width="448" height="470" loading="lazy"
+          <img :src="item.url" width="448" height="470" loading="lazy"
             alt="Acne Baseball Cap" class="img-cover">
         </figure>
       
         <a href="#" class="btn product-btn"   @click.prevent="addToCart(item.id)" >
           <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
+       
           <span class="span">加入购物车</span>
         </a>
 
       </div>
 
       <div class="card-content">
-        <h3 class="h3 title">
+        <h4 class="h3 title">
           <a href="#" class="card-title">{{ item.name }}</a>
-        </h3>
-
-        <span class="price">{{ item.price }}</span>
+        </h4>
+        <span >{{ item.info }}</span>
+        <span class="price">{{ item.price }}元</span>
+        
       </div>
 
     </div>

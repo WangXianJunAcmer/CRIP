@@ -53,7 +53,7 @@ namespace CRIP.Services.Repositorys
 
             public async Task<IEnumerable<Order>> GetOrdersByUserIdAsync(string userId)
             {
-                return await _DbContext.Orders.Where(x => x.UserId == userId).ToListAsync();
+                return await _DbContext.Orders.Where(x => x.UserId == userId).Include(u=>u.User).Include(o=>o.OrderLineItems).ToListAsync();
             }
 
             public async Task<Order> GetOrdersByOrderIdAsync(string orderId)

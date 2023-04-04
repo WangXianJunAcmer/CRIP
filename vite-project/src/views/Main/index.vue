@@ -24,9 +24,7 @@
             <a href="#about" class="navbar-link" data-nav-link>关于</a>
           </li>
 
-          <li class="navbar-item">
-            <a href="#measures" class="navbar-link" data-nav-link>预约挂号</a>
-          </li>
+        
           <li class="navbar-item">
             <a href="/consult" class="navbar-link" data-nav-link>在线就医</a>
           </li>
@@ -39,9 +37,7 @@
             <a href="/shop" class="navbar-link" data-nav-link>药物购买</a>
           </li>
 
-          <li class="navbar-item">
-            <a href="#contact" class="navbar-link" data-nav-link>联系我们</a>
-          </li>
+        
 
         </ul>
       </nav>
@@ -103,7 +99,7 @@ aria-label="home">
 
             </ul>
 
-            <a href="#" class="btn btn-primary">看医生</a>
+            <a href="/consult" class="btn btn-primary">看医生</a>
 
           </div>
 
@@ -508,7 +504,7 @@ import 'echarts/lib/component/title';
 import 'echarts/lib/component/legend';
 import 'echarts/lib/component/toolbox';
 import { cartStore, useTestStore } from '../../store';
-import { getUserSimplifyMessage } from '../../api/common';
+
 
 const isButtonVisible = ref(true);
 const   usermessage= useTestStore();
@@ -588,7 +584,7 @@ const drawChart = (container: HTMLElement) => {
 const chartContainer: Ref<HTMLElement | null> = ref(null);
 
 onMounted(() => {
-getUserSimplifyMessage()
+
 
   const container = chartContainer.value!;
   drawChart(container);

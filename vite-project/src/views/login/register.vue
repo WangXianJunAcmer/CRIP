@@ -2,10 +2,11 @@
     <div style="display: grid; place-items: center; height: 100vh">
       <div class="reg-page">
         <el-form
+        :rules="rules"
           :model="form"
           style="width: 90%"
           ref="ruleFormRef"
-          :rules="rules"         >
+                >
           <h1>注册</h1>
   
           <el-form-item
@@ -56,7 +57,7 @@
             />
           </el-form-item>
           <el-form-item
-            prop="region"
+            prop="address"
             :rules="{
               required: true,
               message: '请选择您的所在地',
@@ -64,7 +65,7 @@
             }"
           >
             <el-select
-              v-model="form.region"
+              v-model="form.address"
               size="large"
               placeholder="请选择您的所在地 "
             >
@@ -82,20 +83,7 @@
               </el-option-group>
             </el-select>
           </el-form-item>
-          <el-form-item
-            prop="resource"
-            :rules="{
-              required: true,
-              message: '请选择您的身份',
-              trigger: 'blur',
-            }"
-            ><el-form-item label="身份">
-              <el-radio-group v-model="form.resource">
-                <el-radio label="普通用户" />
-                <el-radio label="医生" />
-              </el-radio-group>
-            </el-form-item>
-          </el-form-item>
+     
           <div>
             <el-form-item prop="code">
               <input
@@ -176,9 +164,9 @@
     email: "",
     password: "",
     confirmPassword: "",
-    region: "",
+    address: "",
     code: "",
-    resource: "",
+    role: "ordinaryUser",
   });
   
   const ruleFormRef = ref<FormInstance>();

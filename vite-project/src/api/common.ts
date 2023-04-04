@@ -24,6 +24,8 @@ export const postToRegister=async (
         email:string
         password:string
         confirmPassword:string
+        address:string
+        role:string
         code:string
     }
 

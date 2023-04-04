@@ -137,12 +137,12 @@ const handleDelete = async (index: number, row: Drugscart) => {
 const Selectcheckout = async () => {
 
   ElMessageBox.confirm(
-    'proxy will permanently delete the file. Continue?',
-    'Warning',
+    '确定继续下单是吗？',
+   
     {
       confirmButtonText: 'OK',
       cancelButtonText: 'Cancel',
-      type: 'warning',
+      
     }
   )
     .then(async() => {
@@ -176,13 +176,13 @@ const Selectcheckout = async () => {
       ElMessage({
           
         type: 'success',
-        message: 'Delete completed',
+        message: '下单成功',
       })
     })
     .catch(() => {
       ElMessage({
         type: 'info',
-        message: 'Delete canceled',
+        message: '取消下单',
       })
     })
 
@@ -212,7 +212,7 @@ const Allcheckout = async () => {
     <el-icon :size="35" @click="toHome" style="cursor: pointer;">
       <House />
     </el-icon>
-    <Order />
+    <Order  />
   </header>
   <main style="display: flex;">
     <div class="left">
@@ -229,8 +229,8 @@ const Allcheckout = async () => {
      " @selection-change="handleSelectionChange" row-class-name="table-row">
           <el-table-column type="selection" width="55" />
 
-          <el-table-column property="title" width="120" />
-          <el-table-column property="price" show-overflow-tooltip />
+          <el-table-column property="title" />
+          <el-table-column property="price"  show-overflow-tooltip />
           <el-table-column align="right" width="120">
             <template #header></template>
             <template #default="scope">

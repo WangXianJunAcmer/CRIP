@@ -62,8 +62,9 @@ import { useRouter } from 'vue-router'
 
 
 import { ref } from 'vue'
-import { postLogin } from '../../api/common';
+import { getUserSimplifyMessage, postLogin } from '../../api/common';
 import {  FormInstance } from 'element-plus'
+import { useTestStore } from '../../store';
 //实现路由的跳转
 const router = useRouter()
 
@@ -109,9 +110,15 @@ if(valid)
 // 登录成功后跳转到 Main 页面
 console.log(logindata.data.role);
 if (logindata.data.role == "OrdinaryUser")
+{
+  getUserSimplifyMessage()
+
   router.push("/Main");
+}
+ 
+
 else
-  router.push("/shop");
+  router.push("/doctor");
 }
 else {
 

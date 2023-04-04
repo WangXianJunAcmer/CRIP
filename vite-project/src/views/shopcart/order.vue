@@ -1,88 +1,30 @@
 <script setup lang='ts'>
-import { onMounted, ref, watchEffect } from 'vue'
+import { PropType, onMounted, ref, watchEffect } from 'vue'
 import { ElDrawer} from 'element-plus'
-import { OrderItem } from '../../api/types/type';
+import { OrderItem, cartitem } from '../../api/types/type';
 import { Getfromorder } from '../../api/shop';
-
+import {cartStore} from '../../store'
+import { watch } from 'fs';
+import { createStructuralDirectiveTransform } from '@vue/compiler-core';
+const parentBorder = ref(false)
+const childBorder = ref(false)
 onMounted(async ()=>{
-   
+  
     getdata()
    
-
+    table.value=false;
   })
-    
 
-
-
+ 
+ 
 
 
 const table = ref(false)
 const griddata=ref<OrderItem[]>([])
-const gridData = [
-  {
-    date: '2016-05-02',
-    name: 'Peter Parker',
-    price:30
-  },
-  {
-    date: '2016-05-04',
-    name: 'Peter Parker',
-    price:30
-  },
-  {
-    date: '2016-05-01',
-    name: 'Peter Parker',
-    price:30
-  },
-  {
-    date: '2016-05-03',
-    name: 'Peter Parker',
-    price:30
-  },
-  {
-    date: '2016-05-03',
-    name: 'Peter Parker',
-    price:30
-  },
-  {
-    date: '2016-05-03',
-    name: 'Peter Parker',
-    price:30
-  },
-  {
-    date: '2016-05-03',
-    name: 'Peter Parker',
-    price:30
-  },
-  {
-    date: '2016-05-03',
-    name: 'Peter Parker',
-    price:30
-  },
-  {
-    date: '2016-05-03',
-    name: 'Peter Parker',
-    price:30
-  },
-  {
-    date: '2016-05-03',
-    name: 'Peter Parker',
-    price:30
-  },
-  {
-    date: '2016-05-03',
-    name: 'Peter Parker',
-    price:30
-  },
-  {
-    date: '2016-05-03',
-    name: 'Peter Parker',
-    price:30
-  },
 
-]
 
 const getdata=async()=>{
+  table.value=true;
     const data= await Getfromorder()
     console.log(data);
     griddata.value=data.data;
@@ -94,7 +36,8 @@ const getdata=async()=>{
 
 <template>
 <button 
-@click="table = true"
+
+@click="getdata()"
 style="background: none;
 border: none;
 font: inherit;
@@ -116,14 +59,46 @@ margin-left: 10px;
       
     </template>
     <el-table :data="griddata" style="background: white;">
-      <el-table-column property="createDateUTC" label="下单时间" width="150" />
-      <el-table-column property="id" label="名字" width="200" />
-      <el-table-column property="userId" label="价格" />
+      <el-table-column type="expand">
+      <template #default="props">
+        <div m="4">
+       
+          <el-table :data="props.row. orderLineItems"  :border="childBorder">
+            <el-table-column label="商品名称" prop="title" />
+            <el-table-column label="价格" prop="price" />
+          
+    <el-table-column label="操作">
+      <template #default="scope">
+        <el-button size="small" 
+          >支付</el-button
+        >
+        <el-button
+          size="small"
+          type="danger"
+        
+          >删除</el-button
+        >
+   
+      </template>
+    </el-table-column>
+            
+            
+          </el-table>
+        </div>
+      </template>
+    </el-table-column>
+    
+    <el-table-column label="下单时间" prop="createDateUTC" />
+    <el-table-column label="下单地址" prop="user.address" />
+    
     </el-table>
   </el-drawer>
 </template>
 
 
 <style lang='scss' scoped>
+::v-deep .el-icon svg {
+   color: white;
+}
 
 </style>

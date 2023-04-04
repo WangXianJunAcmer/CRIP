@@ -37,12 +37,12 @@ request.interceptors.request.use(function (config) {
   
   
 
-   
-  
     ElMessage({
       message: response.data.msg,
       type: 'success',
     })
+  
+  
     if (response.data.data.role && response.data.data.token) {
       const role = response.data.data.role
       const tokenmessage = response.data.data.token
@@ -50,6 +50,7 @@ request.interceptors.request.use(function (config) {
       const UseName = useTestStore()
   
       UseName.setName(role, tokenmessage)
+      
 
     }
 

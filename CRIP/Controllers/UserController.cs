@@ -259,7 +259,7 @@ namespace CRIP.Controllers
             //将用户插入到表里，并Hash密码
             var Res = await _userManager.CreateAsync(user, registerParameter.Password);
             IdentityUserRole<string> identityUserRole = new();
-            if (registerParameter.Role == "Docter")
+            if (registerParameter.Role == "Doctor")
             {
                 identityUserRole.UserId = user.Id;
                 identityUserRole.RoleId = _configuration["Roles:doctorGuid"];
