@@ -192,7 +192,7 @@ const toHome=()=>{
                 </h3>
 
                 <p class="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing
+                  帮助患者恢复正常的生活和社会活动。
                 </p>
 
                 <button class="btn-circle" aria-label="read more about psychiatry">
@@ -214,7 +214,7 @@ const toHome=()=>{
                 </h3>
 
                 <p class="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing
+                  预防、诊断和治疗与女性生殖健康有关的疾病和问题。
                 </p>
 
                 <button class="btn-circle" aria-label="read more about Gynecology">
@@ -236,7 +236,7 @@ const toHome=()=>{
                 </h3>
 
                 <p class="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing
+                  专注于研究和治疗与肺部相关的疾病。
                 </p>
 
                 <button class="btn-circle" aria-label="read more about Pulmonology">
@@ -258,7 +258,7 @@ const toHome=()=>{
                 </h3>
 
                 <p class="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing
+                  致力于研究和治疗与骨骼、关节和肌肉相关的疾病和损伤
                 </p>
 
                 <button class="btn-circle" aria-label="read more about Orthopedics">
@@ -286,36 +286,36 @@ const toHome=()=>{
 
           <div class="about-content">
 
-            <p class="section-subtitle title-lg has-after" id="about-label" data-reveal="left">About Us</p>
+            <p class="section-subtitle title-lg has-after" id="about-label" data-reveal="left">有关我们</p>
 
-            <h2 class="headline-md" data-reveal="left">Experienced Workers</h2>
+            <h2 class="headline-md" data-reveal="left">经验丰富的工作人员</h2>
 
             <p class="section-text" data-reveal="left">
-              Aliquam faucibus, odio nec commodo aliquam, neque felis placerat dui, a porta ante lectus dapibus est.
-              Aliquam
+              为患者及其家属提供最为满意的服务。
             </p>
 
             <ul class="tab-list" data-reveal="left">
 
               <li>
-                <button class="tab-btn active">Vision</button>
+                <button class="tab-btn active">愿景</button>
               </li>
 
               <li>
-                <button class="tab-btn">Mission</button>
+                <button class="tab-btn">使命</button>
               </li>
 
               <li>
-                <button class="tab-btn">Strategy</button>
+                <button class="tab-btn">策略</button>
               </li>
 
             </ul>
 
             <p class="tab-text" data-reveal="left">
-              Aliquam faucibus, odio nec commodo aliquam, neque felis placerat dui, a porta ante lectus dapibus est.
-              Aliquam a bibendum mi, sed condimentum
+              我们希望能够看到每个患者都拥有一个充满希望的未来。我们希望患者不再受疾病的困扰，不再受疼痛的折磨，能够做自己喜欢的事情，并和家人、朋友一起度过美好的时光。
+              我们望能够成为患者身边的支持者和帮助者，让他们感受到医疗团队的关怀和支持。我们会用尽全力，让患者不再感到孤单和无助，让他们对治疗充满信心和希望
             </p>
 
+            <br>
             <div class="wrapper">
 
               <ul class="about-list">
@@ -323,25 +323,25 @@ const toHome=()=>{
                 <li class="about-item" data-reveal="left">
                   <ion-icon name="checkmark-circle-outline"></ion-icon>
 
-                  <span class="span">Sonsectetur adipisicing elit</span>
+                  <span class="span">当你的健康遇到波折，<br></span>
                 </li>
 
                 <li class="about-item" data-reveal="left">
                   <ion-icon name="checkmark-circle-outline"></ion-icon>
 
-                  <span class="span">Exercitation ullamco laboris</span>
+                  <span class="span">我祝福你早日康复与健康。</span>
                 </li>
 
                 <li class="about-item" data-reveal="left">
                   <ion-icon name="checkmark-circle-outline"></ion-icon>
 
-                  <span class="span">Eiusmod tempor incididunt</span>
+                  <span class="span">让阳光继续照耀你的脸庞</span>
                 </li>
 
                 <li class="about-item" data-reveal="left">
                   <ion-icon name="checkmark-circle-outline"></ion-icon>
 
-                  <span class="span">Aolore magna aliqua</span>
+                  <span class="span">在微笑中度过每个明天。</span>
                 </li>
 
               </ul>
@@ -373,9 +373,9 @@ const toHome=()=>{
           <ul class="grid-list">
 
             <li>
-              <p class="section-subtitle title-lg" id="listing-label" data-reveal="left">Doctors Listig</p>
+              <p class="section-subtitle title-lg" id="listing-label" data-reveal="left">医生团队</p>
 
-              <h2 class="headline-md" data-reveal="left">Browse by specialist</h2>
+              <h2 class="headline-md" data-reveal="left">最为专业的医生团队</h2>
             </li>
 
             <li>
@@ -386,9 +386,9 @@ const toHome=()=>{
                 </div>
 
                 <div>
-                  <h3 class="headline-sm card-title">Psychiatry</h3>
+                  <h3 class="headline-sm card-title">精神病科</h3>
 
-                  <p class="card-text">Porta velit</p>
+                  <p class="card-text">陈述医生</p>
                 </div>
 
               </div>
@@ -402,9 +402,9 @@ const toHome=()=>{
                 </div>
 
                 <div>
-                  <h3 class="headline-sm card-title">Gynecology</h3>
+                  <h3 class="headline-sm card-title">妇科</h3>
 
-                  <p class="card-text">Mattis augue</p>
+                  <p class="card-text">王淼淼医生</p>
                 </div>
 
               </div>
@@ -418,9 +418,9 @@ const toHome=()=>{
                 </div>
 
                 <div>
-                  <h3 class="headline-sm card-title">Pulmonology</h3>
+                  <h3 class="headline-sm card-title">肺病科</h3>
 
-                  <p class="card-text">Mauris laoreet</p>
+                  <p class="card-text">张毅医生</p>
                 </div>
 
               </div>
@@ -434,9 +434,9 @@ const toHome=()=>{
                 </div>
 
                 <div>
-                  <h3 class="headline-sm card-title">Orthopedics</h3>
+                  <h3 class="headline-sm card-title">骨科</h3>
 
-                  <p class="card-text">Convallis vulputate</p>
+                  <p class="card-text">孙择斯医生</p>
                 </div>
 
               </div>
@@ -450,9 +450,9 @@ const toHome=()=>{
                 </div>
 
                 <div>
-                  <h3 class="headline-sm card-title">Pediatrics</h3>
+                  <h3 class="headline-sm card-title">儿科</h3>
 
-                  <p class="card-text">Posuere maecenas</p>
+                  <p class="card-text">王忝医生</p>
                 </div>
 
               </div>
@@ -466,9 +466,9 @@ const toHome=()=>{
                 </div>
 
                 <div>
-                  <h3 class="headline-sm card-title">Osteology</h3>
+                  <h3 class="headline-sm card-title">流感</h3>
 
-                  <p class="card-text">Nisi nullam</p>
+                  <p class="card-text">李留医生</p>
                 </div>
 
               </div>
@@ -506,27 +506,28 @@ const toHome=()=>{
                   <div class="card-meta">
                     <ion-icon name="person-outline"></ion-icon>
 
-                    <span class="span">By Admin</span>
+                    <span class="span">李留</span>
                   </div>
 
                   <div class="card-meta">
                     <ion-icon name="folder-outline"></ion-icon>
 
-                    <span class="span">Specialist</span>
+                    <span class="span">专家组</span>
                   </div>
 
                 </div>
 
-                <h3 class="headline-sm card-title">Could intermittent fasting reduce breast cancer</h3>
+                <h3 class="headline-sm card-title">如何有效预防流感</h3>
 
-                <time class="title-sm date" datetime="2022-01-28">28 January, 2022</time>
+                <time class="title-sm date" datetime="2022-01-28">11月3日, 2022</time>
 
                 <p class="card-text">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                  labore et dolore magna aliquyam erat
+                  预防流感的最佳方法是接种流感疫苗，这可以帮助身体建立免疫力，预防感染。此外，保持良好的个人卫生习惯，如勤洗手、避免接触病毒和在公共场合戴口罩等，也可以有效预防感染。
+
+如果您患有流感，请及时就医并遵循医生的建议进行治疗。
                 </p>
 
-                <a href="#" class="btn-text title-lg">Read More</a>
+                <a href="#" class="btn-text title-lg">更多...</a>
 
               </div>
             </li>
@@ -539,27 +540,27 @@ const toHome=()=>{
                   <div class="card-meta">
                     <ion-icon name="person-outline"></ion-icon>
 
-                    <span class="span">By Admin</span>
+                    <span class="span">李医生</span>
                   </div>
 
                   <div class="card-meta">
                     <ion-icon name="folder-outline"></ion-icon>
 
-                    <span class="span">Specialist</span>
+                    <span class="span">专家组</span>
                   </div>
 
                 </div>
 
-                <h3 class="headline-sm card-title">Give children more autonomy during the pandemic</h3>
+                <h3 class="headline-sm card-title">体检应该重视起来</h3>
 
-                <time class="title-sm date" datetime="2022-01-28">28 January, 2022</time>
+                <time class="title-sm date" datetime="2022-01-28">12月5日, 2022</time>
 
                 <p class="card-text">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                  labore et dolore magna aliquyam erat
+                  体检是指通过一系列的检查和测试，了解个人的身体状况、发现疾病和疾病的早期征兆，为保持身体健康和预防疾病提供重要的信息和建议。定期进行体检是非常重要的。
+                  体检可以帮助我们及早发现潜在的健康问题，通过调整饮食和生活方式，以及及时进行治疗来预防疾病的发生。
                 </p>
 
-                <a href="#" class="btn-text title-lg">Read More</a>
+                <a href="#" class="btn-text title-lg">更多...</a>
 
               </div>
             </li>
@@ -572,27 +573,30 @@ const toHome=()=>{
                   <div class="card-meta">
                     <ion-icon name="person-outline"></ion-icon>
 
-                    <span class="span">By Admin</span>
+                    <span class="span">张三</span>
                   </div>
 
                   <div class="card-meta">
                     <ion-icon name="folder-outline"></ion-icon>
 
-                    <span class="span">Specialist</span>
+                    <span class="span">朋友</span>
                   </div>
 
                 </div>
 
-                <h3 class="headline-sm card-title">How do binge eating and drinking impact the liver?</h3>
+                <h3 class="headline-sm card-title">如何提高免疫力</h3>
 
-                <time class="title-sm date" datetime="2022-01-28">28 January, 2022</time>
+                <time class="title-sm date" datetime="2022-01-28">4月3日, 2023</time>
 
                 <p class="card-text">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                  labore et dolore magna aliquyam erat
+                  拥有一个强大的免疫系统对于我们的身体健康至关重要。
+                  <br>健康饮食：饮食对于免疫系统的功能非常重要。<br>
+                  足够睡眠：睡眠对于免疫系统的功能也至关重要。<br>
+                  .....
+      
                 </p>
 
-                <a href="#" class="btn-text title-lg">Read More</a>
+                <a href="#" class="btn-text title-lg">更多...</a>
 
               </div>
             </li>
