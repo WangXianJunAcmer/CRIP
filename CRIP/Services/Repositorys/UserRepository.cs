@@ -52,7 +52,7 @@ namespace CRIP.Services.Repositorys
                 {
                     result = result.Where(t => t.UserName.Contains(keyword));
                 }
-                else if(FindString== "doctor")//判断用户角色是不是doctor，且地址包含keyword
+                else if(FindString== "address")//判断用户角色是不是doctor，且地址包含keyword
                 {
                     result = result.Where(u =>
                     _CRIPDbContext.UserRoles.FirstOrDefault(r =>r.UserId == userId).RoleId.Equals(_configuration["Roles:doctorGuid"])

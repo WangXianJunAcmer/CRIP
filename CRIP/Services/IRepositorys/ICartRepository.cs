@@ -1,4 +1,5 @@
 ﻿using CRIP.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CRIP.Services.IRepositorys
 {
@@ -16,5 +17,12 @@ namespace CRIP.Services.IRepositorys
         Task<IEnumerable<LineItem>> GetCartItemsByCartIdAsync(string CartId);
         Task<IEnumerable<LineItem>> GetBatchItemsByIDsAsync(IEnumerable<string> IDs);
         Task AddItemsAsync(IEnumerable<LineItem> items);
+        /// <summary>
+        /// 删除order
+        /// </summary>
+        /// <param name="order"></param>
+        void DeleteOrder(Order order);
+   
+
     }
 }

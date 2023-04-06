@@ -356,6 +356,12 @@
         <member name="M:CRIP.Migrations.v4.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="M:CRIP.Services.IRepositorys.ICartRepository.DeleteOrder(CRIP.Models.Order)">
+            <summary>
+            删除order
+            </summary>
+            <param name="order"></param>
+        </member>
         <member name="M:CRIP.Services.IRepositorys.IUserRepository.AddRoleToUserAsync(Microsoft.AspNetCore.Identity.IdentityUserRole{System.String})">
             <summary>
             添加role给user
