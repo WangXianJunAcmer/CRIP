@@ -1,6 +1,6 @@
 import request from "../utils/request";
 import { useTestStore } from '../store';
-import { userMessage } from "./types/type";
+import { IlistDoctor, userMessage } from "./types/type";
 const Getusername=useTestStore();
 
 //发送验证码业务
@@ -97,3 +97,19 @@ export const getUserSimplifyMessage =()=>{
         }
     })
 }
+
+export const getDoctor = (params: IlistDoctor) => {
+    //返回的数据类型
+        return request
+            (
+                {
+                    method: 'GET',
+                    url: `/api/User/Users?Keyword=${params.keyword}&Desc=${params.Desc}&PageNumber=${params.PageNumber}&PageSize=${params.PageSize}`,
+                    params,
+                    headers:{
+                        Authorization: `Bearer ${Getusername.token}`,
+                        Accept: 'application/json' 
+                    }
+                }
+            )
+    }

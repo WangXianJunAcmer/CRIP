@@ -110,6 +110,27 @@
             <param name="paginationResourceParamaters"></param>
             <returns></returns>
         </member>
+        <member name="M:CRIP.Models.OrderController.GetOrdersByOrderId(System.String)">
+            <summary>
+            通过id获得order
+            </summary>
+            <param name="orderId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Models.OrderController.PaymentOrder(System.String)">
+            <summary>
+            支付订单
+            </summary>
+            <param name="orderId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CRIP.Models.OrderController.CancelOrder(System.String)">
+            <summary>
+            取消订单
+            </summary>
+            <param name="orderId"></param>
+            <returns></returns>
+        </member>
         <member name="T:CRIP.Models.CRIPUser">
             <summary>
             User

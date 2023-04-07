@@ -137,3 +137,23 @@ export const Getfromorder =()=>{
         
     })
 }
+
+//支付订单
+
+export const Penment=(orderId :string)=>{
+  const getthename=useTestStore();
+    return requestCart({
+        method:'POST',
+        url:`/api/Order/payment/${orderId}`,
+        headers:{
+            Authorization: `Bearer ${getthename.token}`,
+            'Content-Type':'application/json' ,
+
+        },
+        data: {
+          id: orderId 
+      }
+        
+    })
+
+}

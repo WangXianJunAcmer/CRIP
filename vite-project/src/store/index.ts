@@ -11,6 +11,29 @@ interface CartItem {
 
 }
 
+interface Doctor{
+userName:string,
+address:string,
+email:string
+}
+interface Order {
+
+  orderLineItems: {
+    price: number,
+    title: string
+    orderId:string
+  }
+
+  user: {
+    address: string
+  }
+
+  createDateUTC: string,
+state:number;
+
+
+
+}
 // 用户信息
 export const useTestStore = defineStore(Names.User,
   {
@@ -19,7 +42,8 @@ export const useTestStore = defineStore(Names.User,
       return {
         role: '',
         token: '',
-        username: ''
+        username: '',
+        doctorList:[] as Doctor[]
       }
     },
     //类似计算的 有缓存
@@ -51,8 +75,9 @@ export const cartStore = defineStore(Names.Cart,
   {
 
     state: () => ({
+      
       cart: [] as CartItem[],
-     
+      order:[] as Order[],
     }),
     actions: {
       //获得全部购物车内容
@@ -159,4 +184,8 @@ export const cartStore = defineStore(Names.Cart,
       },
     },
   })
+
+
+
+
 

@@ -8,6 +8,15 @@ export interface IlistParams {
   PageNumber: number,
   PageSize: number
 }
+export interface IlistDoctor {
+
+  keyword: string,
+  OrderBy: string,
+  Desc: boolean,
+  PageNumber: number,
+  PageSize: number
+}
+
 export interface userMessage {
   userName: string
   email: string
@@ -45,6 +54,7 @@ export interface OrderItem {
   orderLineItems: {
     price: number,
     title: string
+    orderId:string
   }
 
   user: {
@@ -52,7 +62,7 @@ export interface OrderItem {
   }
 
   createDateUTC: string,
-
+state:number;
 
 
 
